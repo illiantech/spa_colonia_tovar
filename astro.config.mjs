@@ -13,4 +13,5 @@ export default defineConfig({
   ],
 
   outDir: "./docs",
+  base: "spa_colonia_tovar",
 });
