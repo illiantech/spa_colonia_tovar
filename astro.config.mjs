@@ -12,6 +12,6 @@ export default defineConfig({
     preact(),
   ],
 
-  outDir: "./docs",
+  site: "https://illiantech.github.io",
   base: "spa_colonia_tovar",
 });
