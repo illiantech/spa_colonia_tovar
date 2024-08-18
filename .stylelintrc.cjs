@@ -1,0 +1,21 @@
+module.exports = {
+  extends: ["stylelint-config-tailwindcss", "stylelint-config-standard"],
+
+  rules: {
+    "at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: [
+          "apply",
+          "layer",
+          "responsive",
+          "screen",
+          "tailwind",
+          "variants",
+        ],
+      },
+    ],
+    "declaration-block-trailing-semicolon": null,
+    "no-descending-specificity": null,
+  },
+};
