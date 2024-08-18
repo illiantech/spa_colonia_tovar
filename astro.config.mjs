@@ -13,4 +13,6 @@ export default defineConfig({
   ],
 
   site: "https://illiantech.github.io",
+
+  base: "spa_colonia_tovar",
 });
