@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["stylelint-config-tailwindcss", "stylelint-config-standard"],
+  extends: ["stylelint-config-standard"],
 
   rules: {
     "at-rule-no-unknown": [
@@ -11,11 +11,11 @@ module.exports = {
           "responsive",
           "screen",
           "tailwind",
-          "variants",
-        ],
-      },
+          "variants"
+        ]
+      }
     ],
     "declaration-block-trailing-semicolon": null,
-    "no-descending-specificity": null,
-  },
+    "no-descending-specificity": null
+  }
 };

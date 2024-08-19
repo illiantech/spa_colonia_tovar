@@ -1,4 +1,4 @@
-import { type TourismSite } from "../utils/types";
+import { type TourismSite } from "./types";
 
 export const TOURISM_SITES: TourismSite[] = [
   {
@@ -12,12 +12,13 @@ export const TOURISM_SITES: TourismSite[] = [
         alt: "example1"
       },
       { src: "/spa_colonia_tovar/example2.webp", alt: "example2" }
-    ]
+    ],
+    id: "123-456-789-101-121"
   },
   {
     title: "hola mundo un poco mas ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi",
     images: [
       { src: "/spa_colonia_tovar/example.webp", alt: "example" },
       {

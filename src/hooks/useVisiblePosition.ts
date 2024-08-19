@@ -1,5 +1,7 @@
 import type { RefObject } from "preact";
 import { useCallback, useEffect, useState } from "preact/hooks";
+import { type PictureDiscrimanator } from "../utils/types";
+import { OPACITY_VALUES, OVERFLOW_VALUES } from "../utils/enums";
 
 interface Props {
   refImgPrev: RefObject<HTMLImageElement>;
@@ -9,28 +11,12 @@ interface Props {
   optionsKey: KeyframeEffectOptions;
 }
 
-const enum OPACITY_VALUES {
-  TRANSPARENT,
-  VISIBLE,
-}
-
-const enum OVERFLOW_VALUES {
-  HIDDEN = "hidden",
-  VISIBLE = "visible",
-}
-
-interface PictureDiscrimanator {
-  opacity: OPACITY_VALUES;
-  containerImgNew: HTMLDivElement;
-  overflow: OVERFLOW_VALUES;
-}
-
 export const useVisiblePosition = ({
   refImgNew,
   refImgPrev,
   refDialog,
   refContainerImgNew,
-  optionsKey,
+  optionsKey
 }: Props) => {
   const [active, setActive] = useState<boolean>(false);
 
@@ -38,7 +24,7 @@ export const useVisiblePosition = ({
     async ({ opacity, containerImgNew, overflow }: PictureDiscrimanator) => {
       if (overflow === OVERFLOW_VALUES.HIDDEN) {
         await new Promise((resolve) =>
-          setTimeout(resolve, optionsKey.duration as number),
+          setTimeout(resolve, optionsKey.duration as number)
         ); // No optimo, refactorizar
 
         containerImgNew.style.overflow = overflow;
@@ -46,7 +32,7 @@ export const useVisiblePosition = ({
 
       const PICTUREs_SLIDER = Array.from(
         containerImgNew.firstElementChild
-          ?.children as unknown as Array<HTMLPictureElement>,
+          ?.children as unknown as Array<HTMLPictureElement>
       );
 
       PICTUREs_SLIDER.forEach((picture) => {
@@ -54,7 +40,7 @@ export const useVisiblePosition = ({
           picture.style.opacity = opacity.toString();
       });
     },
-    [],
+    []
   );
 
   const handleSite = () => {
@@ -66,7 +52,7 @@ export const useVisiblePosition = ({
       const {
         x: X_OLD,
         y: Y_OLD,
-        width: W_OLD,
+        width: W_OLD
       } = refImgPrev.current?.getBoundingClientRect() as DOMRect;
 
       document.startViewTransition(async () => {
@@ -76,7 +62,7 @@ export const useVisiblePosition = ({
           cbPictureDiscriminator({
             overflow: OVERFLOW_VALUES.VISIBLE,
             opacity: OPACITY_VALUES.TRANSPARENT,
-            containerImgNew: refContainerImgNew.current,
+            containerImgNew: refContainerImgNew.current
           });
         }
 
@@ -92,15 +78,15 @@ export const useVisiblePosition = ({
             {
               transform: `translateY(${-y + Y_OLD}px) translateX(${-x + X_OLD}px)`,
               width: `${W_OLD}px`,
-              height: `${W_OLD}px`,
+              height: `${W_OLD}px`
             },
             {
               transform: `translateY(0px) translateX(0px)`,
               width: `${width}px`,
-              height: `${width}px`,
-            },
+              height: `${width}px`
+            }
           ],
-          optionsKey,
+          optionsKey
         );
 
         const ANIMATION = new Animation(KEYFRAME);
@@ -111,7 +97,7 @@ export const useVisiblePosition = ({
           cbPictureDiscriminator({
             overflow: OVERFLOW_VALUES.HIDDEN,
             opacity: OPACITY_VALUES.VISIBLE,
-            containerImgNew: refContainerImgNew.current,
+            containerImgNew: refContainerImgNew.current
           });
         }
       });
