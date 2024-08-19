@@ -40,15 +40,15 @@ export const Site = ({ title, description, images, id }: TourismSite) => {
     <>
       <figure
         title="click para mas contenido"
-        class="relative aspect-square w-[45%] max-w-72 cursor-pointer"
+        class="figure-border relative aspect-square w-[45%] max-w-72 cursor-pointer border-[2px] after:absolute after:top-0 after:aspect-square after:w-full after:bg-black after:opacity-30 after:transition-opacity after:content-[''] lg:after:hover:opacity-10"
         onClick={handleSite}
       >
         <img
           ref={refImgPrev}
-          class="h-full object-cover object-center"
+          class="h-full w-full object-cover object-center"
           {...images[FIRST_IMG]}
         />
-        <figcaption class="absolute top-0 inline-block rounded-br-sm bg-black p-1 text-[10px] font-bold lg:text-sm">
+        <figcaption class="bg-tr bg-black-opac md absolute bottom-0 z-10 inline-block w-full p-1 py-2 text-center text-xs font-bold sm:text-sm">
           {title}
         </figcaption>
       </figure>

@@ -29,6 +29,19 @@ export const TOURISM_SITES: TourismSite[] = [
     ]
   },
   {
+    title: "Iglesia San Martín de Tours",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1"
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" }
+    ]
+  },
+  {
     title: "hola mundo un poco mas ",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",

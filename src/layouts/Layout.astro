@@ -55,11 +55,37 @@ const { title } = Astro.props;
   }
 
   :root {
-    --cpr: hsl(0, 0%, 15%);
+    --cpr: hsl(0, 0%, 5%);
     --csr: hsl(0, 0%, 95%);
-
+    --angle: 90deg;
+    --terrecotta-soft: #1f1c18;
+    --terracotta: #780f04;
     background-color: var(--cpr);
     color: var(--csr);
     font-family: system-ui, sans-serif;
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 90deg;
+    inherits: true;
+  }
+
+  .figure-border {
+    border-image: conic-gradient(
+        from var(--angle),
+        var(--terrecotta-soft),
+        var(--terracotta) 0.4turn,
+        var(--terracotta) 0.4turn,
+        var(--terrecotta-soft) 0.6turn
+      )
+      30;
+    animation: border-rotate 8s linear infinite;
+  }
+
+  @keyframes border-rotate {
+    to {
+      --angle: 460deg;
+    }
   }
 </style>

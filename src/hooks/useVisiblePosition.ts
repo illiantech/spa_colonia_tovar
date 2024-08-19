@@ -1,7 +1,7 @@
 import type { RefObject } from "preact";
 import { useCallback, useEffect, useState } from "preact/hooks";
-import { type PictureDiscrimanator } from "../utils/types";
 import { OPACITY_VALUES, OVERFLOW_VALUES } from "../utils/enums";
+import { type PictureDiscrimanator } from "../utils/types";
 
 interface Props {
   refImgPrev: RefObject<HTMLImageElement>;
