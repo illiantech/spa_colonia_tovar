@@ -26,9 +26,10 @@ export function useBlazeSlider({ config, active }: Props) {
 
     return () => {
       if (sliderRef.current) {
+        if (refUnsuscribe.current) refUnsuscribe.current();
+        setImgIndex(1);
         sliderRef.current.destroy();
         sliderRef.current = null;
-        if (refUnsuscribe.current) refUnsuscribe.current();
       }
     };
   }, [active]);

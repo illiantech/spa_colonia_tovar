@@ -11,12 +11,13 @@ interface Props {
   images: Images[];
 }
 
+const FIRST_IMG = 0;
+
 export const Site = ({ title, description, images }: Props) => {
   const refImgPrev = useRef<HTMLImageElement>(null);
   const refImgNew = useRef<HTMLImageElement>(null);
   const refDialog = useRef<HTMLDialogElement>(null);
   const refContainerImgNew = useRef<HTMLDivElement>(null);
-  const FIRST_IMG = useMemo(() => 0, []);
 
   const { handleSite, active, closeSite } = useVisiblePosition({
     refImgNew,
@@ -51,7 +52,7 @@ export const Site = ({ title, description, images }: Props) => {
         <img
           ref={refImgPrev}
           class="object-cover h-full object-center "
-          {...images[0]}
+          {...images[FIRST_IMG]}
         />
         <figcaption class="absolute top-0 bg-black inline-block p-1  text-[10px] lg:text-sm rounded-br-sm font-bold">
           {title}
@@ -80,6 +81,7 @@ export const Site = ({ title, description, images }: Props) => {
                       return (
                         <picture class=" block w-full aspect-square  ">
                           <img
+                            decoding="async"
                             key={img.src}
                             ref={i === FIRST_IMG ? refImgNew : undefined}
                             class="object-cover w-full aspect-square"
@@ -91,11 +93,11 @@ export const Site = ({ title, description, images }: Props) => {
                   </div>
                 </div>
 
-                <div class=" absolute top-2 left-2 ri w-10 h-6 bg-[hsla(0,0%,15%,0.8)] flex items-center justify-center text-white text-sm rounded-xl">{`${imgIndex}/${images.length}`}</div>
+                <div class=" absolute top-2 left-2 w-10 h-6 lg:w-[52px] lg:h-8  bg-[hsla(0,0%,15%,0.8)] flex items-center justify-center text-white text-sm lg:text-lg rounded-2xl">{`${imgIndex}/${images.length}`}</div>
 
                 <button
                   title="anterior"
-                  class=" absolute left-2 top-2/4 w-6 h-6 text-lg lg:w-10 lg:h-10 lg:text-2xl font-bold font-mono rounded-full bg-white opacity-60 hover:opacity-70 flex items-center justify-center blaze-prev"
+                  class=" absolute left-2 top-2/4 w-6 h-6 text-lg lg:w-10 lg:h-10 lg:text-3xl font-bold font-mono rounded-full bg-white opacity-60 hover:opacity-70 flex items-center justify-center blaze-prev"
                   aria-label="Go to previous slide"
                 >
                   {"<"}
@@ -103,7 +105,7 @@ export const Site = ({ title, description, images }: Props) => {
 
                 <button
                   title="siguiente"
-                  class="absolute right-2 top-2/4 blaze-next w-6 h-6 text-lg lg:w-10 lg:h-10 lg:text-2xl font-bold font-mono rounded-full opacity-60 hover:opacity-70 flex items-center justify-center bg-white"
+                  class="absolute right-2 top-2/4 blaze-next w-6 h-6 text-lg lg:w-10 lg:h-10 lg:text-3xl font-bold font-mono rounded-full opacity-60 hover:opacity-70 flex items-center justify-center bg-white"
                   aria-label="Go to next slide"
                 >
                   {">"}

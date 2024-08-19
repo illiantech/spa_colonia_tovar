@@ -9,10 +9,20 @@ interface Props {
   optionsKey: KeyframeEffectOptions;
 }
 
+const enum OPACITY_VALUES {
+  TRANSPARENT,
+  VISIBLE,
+}
+
+const enum OVERFLOW_VALUES {
+  HIDDEN = "hidden",
+  VISIBLE = "visible",
+}
+
 interface PictureDiscrimanator {
-  opacity: number;
+  opacity: OPACITY_VALUES;
   containerImgNew: HTMLDivElement;
-  overflow: string;
+  overflow: OVERFLOW_VALUES;
 }
 
 export const useVisiblePosition = ({
@@ -26,7 +36,7 @@ export const useVisiblePosition = ({
 
   const cbPictureDiscriminator = useCallback(
     async ({ opacity, containerImgNew, overflow }: PictureDiscrimanator) => {
-      if (overflow === "hidden") {
+      if (overflow === OVERFLOW_VALUES.HIDDEN) {
         await new Promise((resolve) =>
           setTimeout(resolve, optionsKey.duration as number),
         ); // No optimo, refactorizar
@@ -64,13 +74,14 @@ export const useVisiblePosition = ({
 
         if (refContainerImgNew.current) {
           cbPictureDiscriminator({
-            overflow: "visible",
-            opacity: 0,
+            overflow: OVERFLOW_VALUES.VISIBLE,
+            opacity: OPACITY_VALUES.TRANSPARENT,
             containerImgNew: refContainerImgNew.current,
           });
         }
 
-        (refImgPrev.current?.parentElement as HTMLElement).style.opacity = "0";
+        (refImgPrev.current?.parentElement as HTMLElement).style.opacity =
+          OPACITY_VALUES.TRANSPARENT.toString();
 
         const { x, y, width } =
           refImgNew.current?.getBoundingClientRect() as DOMRect;
@@ -98,8 +109,8 @@ export const useVisiblePosition = ({
 
         if (refContainerImgNew.current) {
           cbPictureDiscriminator({
-            overflow: "hidden",
-            opacity: 1,
+            overflow: OVERFLOW_VALUES.HIDDEN,
+            opacity: OPACITY_VALUES.VISIBLE,
             containerImgNew: refContainerImgNew.current,
           });
         }
@@ -114,7 +125,8 @@ export const useVisiblePosition = ({
     ) {
       const TRANS = document.startViewTransition(() => {
         refDialog.current?.close();
-        (refImgPrev.current?.parentElement as HTMLElement).style.opacity = "1";
+        (refImgPrev.current?.parentElement as HTMLElement).style.opacity =
+          OPACITY_VALUES.VISIBLE.toString();
       });
 
       await TRANS.finished;
