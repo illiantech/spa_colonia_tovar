@@ -20,6 +20,9 @@ importers:
       astro:
         specifier: 4.14.2
         version: 4.14.2(rollup@4.20.0)(typescript@5.5.4)
+      blaze-slider:
+        specifier: ^1.9.3
+        version: 1.9.3
       preact:
         specifier: 10.23.2
         version: 10.23.2
@@ -835,6 +838,9 @@ packages:
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
+
+  blaze-slider@1.9.3:
+    resolution: {integrity: sha512-u8i4AhbjICF6gpyKeMEg65kupT2JoN+E7yOJjOt3ocUtS+r4SKYU79DPNSBV2Zb61fix4ChIxfPyyRUSmLao5g==}
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
@@ -3388,6 +3394,8 @@ snapshots:
   base-64@1.0.0: {}
 
   binary-extensions@2.3.0: {}
+
+  blaze-slider@1.9.3: {}
 
   boolbase@1.0.0: {}
 

@@ -1,39 +1,57 @@
-import { useRef } from "preact/hooks";
+import { useMemo, useRef } from "preact/hooks";
 import { useVisiblePosition } from "../hooks/useVisiblePosition";
+import { useBlazeSlider } from "../hooks/useBlazeSlider";
+import "blaze-slider/dist/blaze.css";
+
+import { type Images } from "../uitls/sites";
 
 interface Props {
   title: string;
   description: string;
-  IMGs: string[];
+  images: Images[];
 }
 
-export const Site = ({ title, description, IMGs }: Props) => {
+export const Site = ({ title, description, images }: Props) => {
   const refImgPrev = useRef<HTMLImageElement>(null);
   const refImgNew = useRef<HTMLImageElement>(null);
   const refDialog = useRef<HTMLDialogElement>(null);
+  const refContainerImgNew = useRef<HTMLDivElement>(null);
+  const FIRST_IMG = useMemo(() => 0, []);
 
-  const { handleSite, active } = useVisiblePosition({
+  const { handleSite, active, closeSite } = useVisiblePosition({
     refImgNew,
     refImgPrev,
     refDialog,
+    refContainerImgNew,
     optionsKey: {
-      duration: 500,
+      duration: 400,
       iterations: 1,
       easing: "ease",
+    },
+  });
+
+  const { refSlider, imgIndex } = useBlazeSlider({
+    active,
+    config: {
+      all: {
+        draggable: true,
+        slidesToShow: 1,
+        slideGap: "0px",
+      },
     },
   });
 
   return (
     <>
       <figure
-        class="w-[45%] max-w-72 aspect-square relative"
+        title="click para mas contenido"
+        class="cursor-pointer w-[45%] max-w-72 aspect-square relative"
         onClick={handleSite}
       >
         <img
           ref={refImgPrev}
           class="object-cover h-full object-center "
-          src={IMGs[0]}
-          alt="example"
+          {...images[0]}
         />
         <figcaption class="absolute top-0 bg-black inline-block p-1  text-[10px] lg:text-sm rounded-br-sm font-bold">
           {title}
@@ -42,23 +60,73 @@ export const Site = ({ title, description, IMGs }: Props) => {
       {active && (
         <dialog
           ref={refDialog}
-          class="focus-visible:outline-none overflow-visible backdrop:bg-black backdrop:bg-opacity-30  h-3/4 bg-transparent w-3/4 max-w-96
+          class="focus-visible:outline-none overflow-visible backdrop:bg-black backdrop:bg-opacity-50  h-3/4 bg-transparent w-3/4 max-w-96 lg:max-w-5xl  lg:w-5/6 lg:h-fit
         "
         >
-          <picture class=" block w-full aspect-square">
-            <img
-              ref={refImgNew}
-              class="object-cover w-full aspect-square"
-              src={IMGs[0]}
-              alt="example"
-            />
-          </picture>
-          <article class="bg-gray-950 text-white overflow-auto h-2/5 rounded-b-md p-5 flex flex-col gap-y-4 items-end">
-            <button class="">onClick</button>
-            <h3 class="font-bold w-full">{title}</h3>
+          <button
+            title="cerrar"
+            class="absolute -top-20 -right-8 lg:-right-20 lg:-top-10 w-7 h-7 before:content-[''] before:w-7 before:h-[3px] before:bg-white hover:before:bg-gray-300 before:absolute before:rounded-md before:left-0 before:rotate-45 after:content-[''] after:w-7 after:h-[3px] after:bg-white hover:after:bg-gray-300 after:absolute after:rounded-md after:left-0 after:-rotate-45"
+            onClick={closeSite}
+          ></button>
+          <div
+            class="
+         h-full lg:grid lg:grid-rows-1 lg:grid-cols-[1fr_350px]"
+          >
+            <div class="blaze-slider w-full aspect-square" ref={refSlider}>
+              <div class="blaze-container">
+                <div ref={refContainerImgNew} class="blaze-track-container">
+                  <div class="blaze-track">
+                    {images.map((img, i) => {
+                      return (
+                        <picture class=" block w-full aspect-square  ">
+                          <img
+                            key={img.src}
+                            ref={i === FIRST_IMG ? refImgNew : undefined}
+                            class="object-cover w-full aspect-square"
+                            {...img}
+                          />
+                        </picture>
+                      );
+                    })}
+                  </div>
+                </div>
 
-            <p class="w-full">{description}</p>
-          </article>
+                <div class=" absolute top-2 left-2 ri w-10 h-6 bg-[hsla(0,0%,15%,0.8)] flex items-center justify-center text-white text-sm rounded-xl">{`${imgIndex}/${images.length}`}</div>
+
+                <button
+                  title="anterior"
+                  class=" absolute left-2 top-2/4 w-6 h-6 text-lg lg:w-10 lg:h-10 lg:text-2xl font-bold font-mono rounded-full bg-white opacity-60 hover:opacity-70 flex items-center justify-center blaze-prev"
+                  aria-label="Go to previous slide"
+                >
+                  {"<"}
+                </button>
+
+                <button
+                  title="siguiente"
+                  class="absolute right-2 top-2/4 blaze-next w-6 h-6 text-lg lg:w-10 lg:h-10 lg:text-2xl font-bold font-mono rounded-full opacity-60 hover:opacity-70 flex items-center justify-center bg-white"
+                  aria-label="Go to next slide"
+                >
+                  {">"}
+                </button>
+              </div>
+            </div>
+
+            <article class="lg:h-full bg-gray-950 text-white  h-1/2  rounded-b-md lg:rounded-r-md lg:rounded-bl-none  relative">
+              <div class="flex flex-col items-center lg:flex-row gap-1 lg:gap-3 absolute left-[85%] lg:left-5 top-4 lg:top-[90%]">
+                <button>
+                  <div class="w-6 h-6 lg:w-8 lg:h-8 bg-white"></div>
+                </button>
+                <p class="text-xs">1000K</p>
+              </div>
+              <h3 class="font-bold  lg:mt-0  text-lg border-b border-neutral-700 pt-16 pb-6 lg:py-6 px-6 lg:text-xl">
+                {title}
+              </h3>
+
+              <p class="overflow-auto h-1/2 lg:h-72 xl:h-[450px]  p-6">
+                {description}
+              </p>
+            </article>
+          </div>
         </dialog>
       )}
     </>

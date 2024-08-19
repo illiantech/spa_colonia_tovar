@@ -1,44 +1,184 @@
+export interface Images {
+  src: string;
+  alt: string;
+}
+
 interface Sites {
   title: string;
   description: string;
-  IMGs: string[];
+  images: Images[];
 }
 
 export const sites: Sites[] = [
   {
     title: "hola mundo un poco mas ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
-    IMGs: ["/spa_colonia_tovar/example.webp"],
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1",
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" },
+    ],
   },
   {
-    title: "hola mundo",
+    title: "hola mundo un poco mas ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
-    IMGs: ["/spa_colonia_tovar/example.webp"],
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1",
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" },
+    ],
   },
   {
-    title: "hola mundo",
+    title: "hola mundo un poco mas ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
-    IMGs: ["/spa_colonia_tovar/example.webp"],
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1",
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" },
+    ],
   },
   {
-    title: "hola mundo",
+    title: "hola mundo un poco mas ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
-    IMGs: ["/spa_colonia_tovar/example.webp"],
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1",
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" },
+    ],
   },
   {
-    title: "hola mundo",
+    title: "hola mundo un poco mas ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
-    IMGs: ["/spa_colonia_tovar/example.webp"],
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1",
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" },
+    ],
   },
   {
-    title: "hola mundo",
+    title: "hola mundo un poco mas ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
-    IMGs: ["/spa_colonia_tovar/example.webp"],
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1",
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" },
+    ],
+  },
+  {
+    title: "hola mundo un poco mas ",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur pepe",
+    images: [
+      { src: "/spa_colonia_tovar/example.webp", alt: "example" },
+      {
+        src: "/spa_colonia_tovar/example1.webp",
+        alt: "example1",
+      },
+      { src: "/spa_colonia_tovar/example2.webp", alt: "example2" },
+    ],
   },
 ];
+
+// export const sites: Sites[] = [
+//   {
+//     title: "hola mundo un poco mas ",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque! Lorem ipsum dolor sit amet, consectetur adipisicing",
+//     IMGs: [
+//       "/spa_colonia_tovar/example.webp",
+//       "/spa_colonia_tovar/example1.webp",
+//       "/spa_colonia_tovar/example2.webp",
+//     ],
+//     ALTs: ["example", "example1", "example2"],
+//   },
+//   {
+//     title: "hola mundo",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
+//     IMGs: [
+//       "/spa_colonia_tovar/example.webp",
+//       "/spa_colonia_tovar/example1.webp",
+//       "/spa_colonia_tovar/example2.webp",
+//     ],
+//     ALTs: ["example", "example1", "example2"],
+//   },
+//   {
+//     title: "hola mundo",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
+//     IMGs: [
+//       "/spa_colonia_tovar/example.webp",
+//       "/spa_colonia_tovar/example1.webp",
+//       "/spa_colonia_tovar/example2.webp",
+//     ],
+//     ALTs: ["example", "example1", "example2"],
+//   },
+//   {
+//     title: "hola mundo",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
+//     IMGs: [
+//       "/spa_colonia_tovar/example.webp",
+//       "/spa_colonia_tovar/example1.webp",
+//       "/spa_colonia_tovar/example2.webp",
+//     ],
+//     ALTs: ["example", "example1", "example2"],
+//   },
+//   {
+//     title: "hola mundo",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
+//     IMGs: [
+//       "/spa_colonia_tovar/example.webp",
+//       "/spa_colonia_tovar/example1.webp",
+//       "/spa_colonia_tovar/example2.webp",
+//     ],
+//     ALTs: ["example", "example1", "example2"],
+//   },
+//   {
+//     title: "hola mundo",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
+//     IMGs: [
+//       "/spa_colonia_tovar/example.webp",
+//       "/spa_colonia_tovar/example1.webp",
+//       "/spa_colonia_tovar/example2.webp",
+//     ],
+//     ALTs: ["example", "example1", "example2"],
+//   },
+//   {
+//     title: "hola mundo",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci excepturi optio odit magni in cupiditate culpa, doloribus magnam illum dicta hic non maiores consequuntur nam blanditiis recusandae nostrum libero eaque!",
+//     IMGs: [
+//       "/spa_colonia_tovar/example.webp",
+//       "/spa_colonia_tovar/example1.webp",
+//       "/spa_colonia_tovar/example2.webp",
+//     ],
+//     ALTs: ["example", "example1", "example2"],
+//   },
+// ];
