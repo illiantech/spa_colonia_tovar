@@ -58,8 +58,8 @@ const { title } = Astro.props;
     --cpr: hsl(0, 0%, 5%);
     --csr: hsl(0, 0%, 95%);
     --angle: 90deg;
-    --terrecotta-soft: #1f1c18;
-    --terracotta: #780f04;
+    --terrecotta-soft: hsl(8, 100%, 5%);
+    --terracotta: hsl(8, 90%, 40%);
     background-color: var(--cpr);
     color: var(--csr);
     font-family: system-ui, sans-serif;
@@ -85,7 +85,7 @@ const { title } = Astro.props;
 
   @keyframes border-rotate {
     to {
-      --angle: 460deg;
+      --angle: 450deg;
     }
   }
 </style>

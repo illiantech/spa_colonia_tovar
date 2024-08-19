@@ -6,7 +6,12 @@ export default {
       colors: {
         "terracotta-soft": "#1F1C18",
         terracotta: "#780f04",
-        "black-opac": "hsla(0, 0%, 0%,.6)"
+        "black-opac-1": "hsla(0, 0%, 0%,.7)",
+        "black-opac-2": "hsla(0, 0%, 0%,.6)",
+        "black-opac-3": "hsla(0, 0%, 0%,.5)",
+        "black-opac-4": "hsla(0, 0%, 0%,.4)",
+        "black-opac-5": "hsla(0, 0%, 0%,.3)",
+        "black-opac-6": "hsla(0, 0%, 0%,.2)"
       }
     },
     plugins: []
