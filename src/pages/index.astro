@@ -1,5 +1,5 @@
 ---
-import { Site } from "../components/Site";
+import { SiteModal } from "../components/SiteModal";
 import Layout from "../layouts/Layout.astro";
 import { TOURISM_SITES } from "../utils/sites";
 ---
@@ -9,7 +9,7 @@ import { TOURISM_SITES } from "../utils/sites";
     <div
       class="flex max-w-6xl flex-wrap justify-evenly gap-x-1 gap-y-5 overflow-auto lg:gap-x-10 lg:gap-y-20"
     >
-      {TOURISM_SITES.map((site) => <Site client:visible {...site} />)}
+      {TOURISM_SITES.map((site) => <SiteModal client:visible {...site} />)}
     </div>
   </section>
 </Layout>

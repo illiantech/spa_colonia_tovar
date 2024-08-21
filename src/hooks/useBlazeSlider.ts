@@ -4,10 +4,9 @@ import { useEffect, useRef, useState } from "preact/hooks";
 
 interface Props {
   config: BlazeConfig;
-  active: boolean;
 }
 
-export function useBlazeSlider({ config, active }: Props) {
+export function useBlazeSlider({ config }: Props) {
   const sliderRef = useRef<BlazeSlider>(null);
   const refSlider = useRef<HTMLDivElement>(null);
   const refUnsuscribe = useRef<() => boolean>(null);
@@ -27,12 +26,10 @@ export function useBlazeSlider({ config, active }: Props) {
     return () => {
       if (sliderRef.current) {
         if (refUnsuscribe.current) refUnsuscribe.current();
-        setImgIndex(1);
-        sliderRef.current.destroy();
         sliderRef.current = null;
       }
     };
-  }, [active]);
+  }, []);
 
   return { refSlider, imgIndex };
 }

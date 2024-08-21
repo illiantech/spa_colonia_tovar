@@ -21,6 +21,8 @@ export const Front = <T extends HTMLElement>({
       onClick={handleSite}
     >
       <img
+        loading="lazy"
+        decoding="async"
         ref={refImgPrev as unknown as RefObject<HTMLImageElement>}
         class="h-full w-full object-cover object-center"
         {...image}

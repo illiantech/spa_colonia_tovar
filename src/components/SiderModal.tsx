@@ -4,7 +4,6 @@ import { useBlazeSlider } from "../hooks/useBlazeSlider";
 import { type Image } from "../utils/types";
 
 interface Props<T> {
-  active: boolean;
   images: Image[];
   refImgNew: RefObject<T>;
 }
@@ -12,12 +11,10 @@ interface Props<T> {
 // dame nummeros multiplos de 5 hasta llegar a 100
 
 export const Slider = <T extends HTMLElement>({
-  active,
   images,
   refImgNew
 }: Props<T>) => {
   const { refSlider, imgIndex } = useBlazeSlider({
-    active,
     config: {
       all: {
         draggable: true,
