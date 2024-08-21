@@ -1,20 +1,17 @@
 import "blaze-slider/dist/blaze.css";
-
 import type { RefObject } from "preact";
 import { useBlazeSlider } from "../hooks/useBlazeSlider";
-import { type Image, type PropsSlider } from "../utils/types";
+import { type Image } from "../utils/types";
 
-interface Props<T> extends PropsSlider<T> {
+interface Props<T> {
   active: boolean;
-  FirstIndex: number;
   images: Image[];
+  refImgNew: RefObject<T>;
 }
 
 // dame nummeros multiplos de 5 hasta llegar a 100
 
 export const Slider = <T extends HTMLElement>({
-  refContainerImgNew,
-  FirstIndex,
   active,
   images,
   refImgNew
@@ -32,23 +29,18 @@ export const Slider = <T extends HTMLElement>({
 
   return (
     <div class="blaze-slider aspect-square w-full" ref={refSlider}>
-      <div class="blaze-container">
-        <div
-          ref={refContainerImgNew as unknown as RefObject<HTMLDivElement>}
-          class="blaze-track-container"
-        >
+      <div
+        class="blaze-container"
+        ref={refImgNew as unknown as RefObject<HTMLDivElement>}
+      >
+        <div class="blaze-track-container">
           <div class="blaze-track">
-            {images.map((img, i) => {
+            {images.map((img) => {
               return (
                 <picture class="block aspect-square w-full">
                   <img
                     decoding="async"
-                    key={img.src}
-                    ref={
-                      i === FirstIndex
-                        ? (refImgNew as unknown as RefObject<HTMLImageElement>)
-                        : undefined
-                    }
+                    key={img.alt}
                     class="aspect-square w-full object-cover"
                     {...img}
                   />
@@ -61,7 +53,7 @@ export const Slider = <T extends HTMLElement>({
         <div class="absolute left-2 top-2 flex h-6 w-10 items-center justify-center rounded-2xl bg-[hsla(0,0%,15%,0.8)] text-sm text-white lg:h-8 lg:w-[52px] lg:text-lg">{`${imgIndex}/${images.length}`}</div>
 
         <button
-          title="anterior"
+          title="Anterior"
           class="blaze-prev absolute left-2 top-2/4 flex h-6 w-6 items-center justify-center rounded-full bg-white font-mono text-lg font-bold opacity-60 hover:opacity-70 lg:h-10 lg:w-10 lg:text-3xl"
           aria-label="Go to previous slide"
         >
@@ -69,7 +61,7 @@ export const Slider = <T extends HTMLElement>({
         </button>
 
         <button
-          title="siguiente"
+          title="Siguiente"
           class="blaze-next absolute right-2 top-2/4 flex h-6 w-6 items-center justify-center rounded-full bg-white font-mono text-lg font-bold opacity-60 hover:opacity-70 lg:h-10 lg:w-10 lg:text-3xl"
           aria-label="Go to next slide"
         >

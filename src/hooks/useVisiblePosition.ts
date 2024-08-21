@@ -1,57 +1,18 @@
 import { useCallback, useEffect, useState } from "preact/hooks";
-import { OPACITY_VALUES, OVERFLOW_VALUES } from "../utils/enums";
-import {
-  type AnimatioElement,
-  type PictureDiscrimanator,
-  type PropsVsiblePosition
-} from "../utils/types";
+import { OPACITY_VALUES } from "../utils/enums";
+import { type AnimatioElement, type PropsVsiblePosition } from "../utils/types";
 
 export const useVisiblePosition = <T extends HTMLElement>({
   refImgNew,
   refImgPrev,
   refDialog,
-  refContainerImgNew,
   optionsKey
 }: PropsVsiblePosition<T>) => {
   const [active, setActive] = useState<boolean>(false);
 
-  const cbPictureDiscriminator = useCallback(
-    async <T extends HTMLElement>({
-      opacity,
-      containerImgNew,
-      overflow
-    }: PictureDiscrimanator<T>) => {
-      if (overflow === OVERFLOW_VALUES.HIDDEN) {
-        await new Promise((resolve) =>
-          setTimeout(resolve, optionsKey.duration as number)
-        ); // No optimo, refactorizar
-
-        containerImgNew.style.overflow = overflow;
-      } else containerImgNew.style.overflow = overflow;
-
-      const PICTUREs_SLIDER = Array.from(
-        containerImgNew.firstElementChild?.children as unknown as Array<T>
-      );
-
-      PICTUREs_SLIDER.forEach((picture) => {
-        if (picture.firstElementChild !== refImgNew.current)
-          picture.style.opacity = opacity.toString();
-      });
-    },
-    []
-  );
-
   const cbAnimationElement = useCallback(
     ({ X_OLD, Y_OLD, W_OLD }: AnimatioElement) => {
       (refDialog.current as unknown as HTMLDialogElement).showModal();
-
-      if (refContainerImgNew.current) {
-        cbPictureDiscriminator({
-          overflow: OVERFLOW_VALUES.VISIBLE,
-          opacity: OPACITY_VALUES.TRANSPARENT,
-          containerImgNew: refContainerImgNew.current
-        });
-      }
 
       if (refImgPrev.current?.parentElement)
         refImgPrev.current.parentElement.style.opacity =
@@ -80,14 +41,6 @@ export const useVisiblePosition = <T extends HTMLElement>({
       const ANIMATION = new Animation(KEYFRAME);
 
       ANIMATION.play();
-
-      if (refContainerImgNew.current) {
-        cbPictureDiscriminator({
-          overflow: OVERFLOW_VALUES.HIDDEN,
-          opacity: OPACITY_VALUES.VISIBLE,
-          containerImgNew: refContainerImgNew.current
-        });
-      }
     },
     []
   );
