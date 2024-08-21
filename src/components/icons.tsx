@@ -2,6 +2,7 @@ interface PropsIcons {
   fill?: string;
   stroke?: string;
   strokeWidth?: number;
+  clase?: string;
 }
 export const SendIcon = ({ fill, stroke, strokeWidth }: PropsIcons) => {
   return (
@@ -25,31 +26,34 @@ export const SendIcon = ({ fill, stroke, strokeWidth }: PropsIcons) => {
   );
 };
 
-export const LikeIcon = ({ stroke, fill, strokeWidth }: PropsIcons) => {
+export const LikeIcon = ({ fill, clase }: PropsIcons) => {
   return (
-    <svg
-      width="32px"
-      height="32px"
-      viewBox="3 3 18.00 18.00"
-      fill={fill ? fill : "none"}
-      stroke="#ffffff"
-      stroke-width={
-        strokeWidth ? strokeWidth.toString() : "0.00024000000000000003"
-      }
-    >
-      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <svg viewBox="0 0 24 24" fill="none" style="overflow: visible">
+      <g id="SVGRepo_bgCarrier"></g>
       <g
         id="SVGRepo_tracerCarrier"
         stroke-linecap="round"
         stroke-linejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M15.0501 7.04419C15.4673 5.79254 14.5357 4.5 13.2163 4.5C12.5921 4.5 12.0062 4.80147 11.6434 5.30944L8.47155 9.75H5.85748L5.10748 10.5V18L5.85748 18.75H16.8211L19.1247 14.1428C19.8088 12.7747 19.5406 11.1224 18.4591 10.0408C17.7926 9.37439 16.8888 9 15.9463 9H14.3981L15.0501 7.04419ZM9.60751 10.7404L12.864 6.1813C12.9453 6.06753 13.0765 6 13.2163 6C13.5118 6 13.7205 6.28951 13.627 6.56984L12.317 10.5H15.9463C16.491 10.5 17.0133 10.7164 17.3984 11.1015C18.0235 11.7265 18.1784 12.6814 17.7831 13.472L15.8941 17.25H9.60751V10.7404ZM8.10751 17.25H6.60748V11.25H8.10751V17.25Z"
-          fill={stroke ? stroke : "currentColor"}
-        ></path>
+        <g id="style=fill">
+          <g id="like">
+            <path
+              class={clase}
+              id="vector1"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M15.9977 5.63891C16.2695 4.34931 15.433 3.00969 14.2102 2.59462C13.6171 2.37633 12.9892 2.4252 12.4662 2.60499C11.9449 2.78419 11.4461 3.12142 11.1369 3.58441L11.136 3.58573L7.49506 9.00272C8.05104 9.29585 8.43005 9.87954 8.43005 10.5518V21.3018H6.91003V21.3018H16.6801C18.2938 21.3018 19.2028 20.2977 19.8943 19.202C20.6524 18.0009 21.1453 16.7211 21.5116 15.5812C21.6808 15.0546 21.8252 14.5503 21.9547 14.0984L21.9863 13.9881C22.126 13.5007 22.2457 13.0904 22.366 12.7549C22.698 11.8292 22.5933 10.9072 22.067 10.2072C21.5476 9.5166 20.7005 9.15175 19.76 9.15175H15.76C15.6702 9.15175 15.6017 9.11544 15.5599 9.06803C15.5238 9.02716 15.4831 8.95058 15.502 8.81171L15.9977 5.63891Z"
+              fill={fill ? fill : "currentColor"}
+            ></path>
+            <path
+              class={clase}
+              id="vector2"
+              d="M2.18005 10.6199C2.18005 10.03 2.62777 9.55176 3.18005 9.55176H6.68005C7.23234 9.55176 7.68005 10.03 7.68005 10.6199V21.3018H3.18005C2.62777 21.3018 2.18005 20.8235 2.18005 20.2336V10.6199Z"
+              fill={fill ? fill : "currentColor"}
+            ></path>
+          </g>
+        </g>
       </g>
     </svg>
   );

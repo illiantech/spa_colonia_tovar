@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -100,6 +100,31 @@ const { title } = Astro.props;
   @keyframes border-rotate {
     to {
       --angle: 450deg;
+    }
+  }
+
+  .like {
+    color: #000;
+
+    stroke-width: 2px;
+    stroke: #fff;
+  }
+
+  .like__active {
+    color: #fff;
+    stroke-width: 0px;
+    animation: move 0.4s ease;
+  }
+
+  @keyframes move {
+    40% {
+      transform: rotate(-25deg);
+      color: var(--terracotta);
+    }
+
+    100% {
+      transform: rotate(0deg);
+      color: #fff;
     }
   }
 </style>

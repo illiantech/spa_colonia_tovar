@@ -24,12 +24,6 @@ interface Address {
   link: string;
 }
 
-export interface AnimatioElement {
-  X_OLD: number;
-  Y_OLD: number;
-  W_OLD: number;
-}
-
 export interface PropsVsiblePosition<T> {
   refImgPrev: RefObject<T>;
   refImgNew: RefObject<T>;
