@@ -5,7 +5,6 @@ import { type TourismSite } from "../utils/types";
 import { CloseButton } from "./CloseButtonModal";
 import { Content } from "./ContentModal";
 import { Front } from "./FrontSite";
-import { FormComment } from "./mediaModal/FormComment";
 import { Likes } from "./mediaModal/Likes";
 import { Slider } from "./SiderModal";
 
@@ -46,7 +45,6 @@ export const SiteModal = ({ title, info, images, id }: TourismSite) => {
           <Slider refImgNew={refImgNew} images={images} />
           <Content title={title} info={info}>
             <Likes />
-            <FormComment />
           </Content>
         </div>
       </dialog>

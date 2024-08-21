@@ -41,3 +41,13 @@ export type PropsUseClose<T> = Pick<
   PropsVsiblePosition<T>,
   "refImgPrev" | "refDialog"
 >;
+
+export interface CommentData {
+  comment: string;
+  date: string;
+  user: {
+    name: string;
+    avatar: string;
+  };
+  readonly id: `${string}-${string}-${string}-${string}`;
+}
