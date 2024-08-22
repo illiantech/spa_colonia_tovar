@@ -1,5 +1,3 @@
-import type { RefObject } from "preact";
-
 export interface TourismSite {
   title: string;
   images: Image[];
@@ -25,16 +23,11 @@ interface Address {
 }
 
 export interface PropsVsiblePosition<T> {
-  refImgPrev: RefObject<T>;
-  refImgNew: RefObject<T>;
-  refDialog: RefObject<T>;
+  refImgPrev: T | null;
+  refImgNew: T | null;
+  refDialog: T | null;
   optionsKey: KeyframeEffectOptions;
 }
-
-export type PropsUseClose<T> = Pick<
-  PropsVsiblePosition<T>,
-  "refImgPrev" | "refDialog"
->;
 
 export interface CommentData {
   comment: string;
@@ -45,3 +38,5 @@ export interface CommentData {
   };
   readonly id: `${string}-${string}-${string}-${string}`;
 }
+
+export type CommentEdit = Pick<CommentData, "comment" | "id">;

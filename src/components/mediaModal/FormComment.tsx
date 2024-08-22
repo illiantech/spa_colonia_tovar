@@ -1,12 +1,14 @@
-import { type CommentData } from "../../utils/types";
+import type { MutableRef } from "preact/hooks";
+import { type CommentData, type CommentEdit } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 import { SendIcon } from "../icons";
 
 interface Props {
   setComments: (value: (prev: CommentData[]) => CommentData[]) => void;
+  refCommentEdit: MutableRef<CommentEdit | undefined>;
 }
 
-export const FormComment = ({ setComments }: Props) => {
+export const FormComment = ({ setComments, refCommentEdit }: Props) => {
   const handleInput = (e: SubmitEvent) => {
     e.preventDefault();
 
@@ -22,6 +24,19 @@ export const FormComment = ({ setComments }: Props) => {
         e.target.reset();
         return;
       }
+
+      if (refCommentEdit.current) {
+        setComments((prev) =>
+          prev.map((commentData) =>
+            commentData.id === refCommentEdit.current?.id
+              ? { ...commentData, comment: COMMENT_PARSER }
+              : commentData
+          )
+        );
+        e.target.reset();
+        return;
+      }
+
       const COMMENT_DATA = {
         comment: COMMENT_PARSER,
         date: Date.now(),
@@ -45,6 +60,7 @@ export const FormComment = ({ setComments }: Props) => {
       class="flex h-full flex-1 items-center justify-evenly lg:h-[10%] lg:flex-initial"
     >
       <textarea
+        value={refCommentEdit.current?.comment}
         placeholder="Agrega un comentario..."
         type="text"
         name="comment"

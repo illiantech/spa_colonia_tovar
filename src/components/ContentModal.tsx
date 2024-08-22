@@ -1,7 +1,7 @@
 import type { ComponentChildren } from "preact";
-import { type CommentData, type Info } from "../utils/types";
+import { type CommentData, type CommentEdit, type Info } from "../utils/types";
 
-import { useState } from "preact/hooks";
+import { useRef, useState } from "preact/hooks";
 import { Comment } from "./mediaModal/Comment";
 import { FormComment } from "./mediaModal/FormComment";
 
@@ -13,6 +13,7 @@ interface Props {
 
 export const Content = ({ info, title, children }: Props) => {
   const [comments, setComments] = useState<CommentData[]>([]);
+  const refCommentEdit = useRef<CommentEdit>();
 
   return (
     <article class="relative flex h-1/2 flex-col overflow-hidden rounded-b-md bg-gray-950 text-white lg:h-full lg:justify-between lg:rounded-r-md lg:rounded-bl-none">
@@ -27,11 +28,17 @@ export const Content = ({ info, title, children }: Props) => {
         <br />
         <section>
           {comments.map((comment) => {
-            return <Comment key={comment.id} {...comment} />;
+            return (
+              <Comment
+                refCommentEdit={refCommentEdit}
+                key={comment.id}
+                {...comment}
+              />
+            );
           })}
         </section>
       </div>
-      <FormComment setComments={setComments} />
+      <FormComment refCommentEdit={refCommentEdit} setComments={setComments} />
     </article>
   );
 };

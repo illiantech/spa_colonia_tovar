@@ -1,9 +1,21 @@
-import { useState } from "preact/hooks";
-import { type CommentData } from "../../utils/types";
+import { useState, type MutableRef } from "preact/hooks";
+import { type CommentData, type CommentEdit } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 
-export const Comment = ({ comment, user, date }: CommentData) => {
+interface Props extends CommentData {
+  refCommentEdit: MutableRef<CommentEdit | undefined>;
+}
+
+export const Comment = ({
+  comment,
+  user,
+  date,
+
+  refCommentEdit,
+  id
+}: Props) => {
   const [options, setOptions] = useState<boolean>(false);
+  const [commentEdit, setCommentEdit] = useState<CommentEdit>();
 
   const handleOptions = () => {
     transitionViewIfSupported(() => {
@@ -11,20 +23,35 @@ export const Comment = ({ comment, user, date }: CommentData) => {
     });
   };
 
+  const handleEdit = () => {
+    setCommentEdit({
+      comment,
+      id
+    });
+  };
+
   return (
     <>
-      <article class="grid grid-cols-[.2fr_1fr_.1fr] grid-rows-[36px_1fr] items-center gap-1 text-sm">
+      <article class="grid grid-cols-[.2fr_1fr_.1fr] grid-rows-[36px_1fr] items-center gap-y-0.5 text-sm">
         <img
           class="aspect-square w-9 rounded-full"
           src={user.avatar}
           alt=" Avatar"
         />
-        <h4 class="font-bold">{user.name}</h4>
+        <h4 class="flex flex-col items-start ps-2 font-bold">
+          {user.name}
+
+          {commentEdit && (
+            <div class="grid place-content-center pe-0 text-xs font-normal opacity-60">
+              Editando
+            </div>
+          )}
+        </h4>
         <div class="relative grid place-content-center">
           <button
             onClick={handleOptions}
             title="Opciones del comentario"
-            class="select-none text-2xl opacity-60 hover:opacity-100"
+            class="select-none ps-2 text-2xl opacity-60 lg:hover:opacity-100"
           >
             ...
           </button>
@@ -33,29 +60,27 @@ export const Comment = ({ comment, user, date }: CommentData) => {
               <button
                 onClick={handleOptions}
                 title="Eliminar comentario"
-                class="text-sm font-bold text-red-500"
+                class="font-bold text-red-500"
               >
                 Eliminar
               </button>
               <hr class="w-full border-neutral-700" />
               <button
-                onClick={handleOptions}
+                onClick={handleEdit}
                 title="Editar comentario"
-                class="text-sm font-bold"
+                class="font-bold"
               >
-                Editar
+                {commentEdit ? "No editar" : "Editar"}
               </button>
             </div>
           )}
         </div>
 
         <br />
-        <p class="max-w-[175px] break-words lg:max-w-52">{comment}</p>
+        <p class="max-w-[175px] break-words ps-2 lg:max-w-52">{comment}</p>
 
         <br />
-        <time class="col-start-2 text-sm opacity-60" datetime="">
-          {date}
-        </time>
+        <time class="col-start-2 ps-2 opacity-60">{date}</time>
       </article>
 
       <br />

@@ -21,20 +21,19 @@ export const useVisiblePosition = <T extends HTMLElement>({
         x: X_OLD,
         y: Y_OLD,
         width: W_OLD
-      } = refImgPrev.current?.getBoundingClientRect() as DOMRect;
+      } = refImgPrev?.getBoundingClientRect() as DOMRect;
 
       transitionViewIfSupported(() => {
-        (refDialog.current as unknown as HTMLDialogElement).showModal();
+        (refDialog as unknown as HTMLDialogElement).showModal();
 
-        if (refImgPrev.current?.parentElement)
-          refImgPrev.current.parentElement.style.opacity =
+        if (refImgPrev?.parentElement)
+          refImgPrev.parentElement.style.opacity =
             OPACITY_VALUES.TRANSPARENT.toString();
 
-        const { x, y, width } =
-          refImgNew.current?.getBoundingClientRect() as DOMRect;
+        const { x, y, width } = refImgNew?.getBoundingClientRect() as DOMRect;
 
         const KEYFRAME = new KeyframeEffect(
-          refImgNew.current,
+          refImgNew,
           [
             {
               transform: `translateY(${-y + Y_OLD}px) translateX(${-x + X_OLD}px)`,
