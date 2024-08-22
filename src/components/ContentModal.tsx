@@ -24,6 +24,7 @@ export const Content = ({ info, title, children }: Props) => {
         <p> {info.description}</p>
         <br />
         <br />
+        <br />
         <section>
           {comments.map((comment) => {
             return <Comment key={comment.id} {...comment} />;

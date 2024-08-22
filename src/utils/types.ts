@@ -38,7 +38,7 @@ export type PropsUseClose<T> = Pick<
 
 export interface CommentData {
   comment: string;
-  date: string;
+  date: number;
   user: {
     name: string;
     avatar: string;

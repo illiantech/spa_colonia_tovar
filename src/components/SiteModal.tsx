@@ -13,7 +13,7 @@ export const SiteModal = ({ title, info, images, id }: TourismSite) => {
   const refImgNew = useRef(null);
   const refDialog = useRef(null);
 
-  const { handleSite, active, setActive } = useVisiblePosition({
+  const { handleSite, setActive } = useVisiblePosition({
     refImgNew,
     refImgPrev,
     refDialog,
@@ -23,7 +23,7 @@ export const SiteModal = ({ title, info, images, id }: TourismSite) => {
       easing: "ease"
     }
   });
-
+  // 40 character
   const { closeSite } = useClose({ refDialog, refImgPrev, setActive });
 
   return (

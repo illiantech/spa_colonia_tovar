@@ -1,4 +1,5 @@
 import { type CommentData } from "../../utils/types";
+import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 import { SendIcon } from "../icons";
 
 interface Props {
@@ -16,28 +17,25 @@ export const FormComment = ({ setComments }: Props) => {
 
       const COMMENT_PARSER = (comment as string).trim();
 
-      if (COMMENT_PARSER) {
-        const COMMENT_DATA: CommentData = {
-          comment: COMMENT_PARSER,
-          date: new Date().toLocaleString("es-ES", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit"
-          }),
-          user: {
-            name: "Usuario Anónimo",
-            avatar: "/spa_colonia_tovar/team-example.webp"
-          },
-          id: crypto.randomUUID()
-        };
-
-        setComments((prev) => [...prev, COMMENT_DATA]);
-        e.target.reset();
-      } else {
+      if (!COMMENT_PARSER) {
         alert("Por favor, escribe un comentario.");
+        e.target.reset();
+        return;
       }
+      const COMMENT_DATA = {
+        comment: COMMENT_PARSER,
+        date: Date.now(),
+        user: {
+          name: "Usuario Anónimo",
+          avatar: "/spa_colonia_tovar/team-example.webp"
+        },
+        id: crypto.randomUUID()
+      };
+
+      transitionViewIfSupported(() => {
+        setComments((prev) => [...prev, COMMENT_DATA]);
+      });
+      e.target.reset();
     }
   };
 
