@@ -1,5 +1,5 @@
 import type { ChangeEvent } from "preact/compat";
-import { type CommentData, type ID } from "../../utils/types";
+import { type CommentData, type Options } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 import { SendIcon } from "../icons";
 
@@ -7,16 +7,16 @@ interface Props {
   setComments: (value: (prev: CommentData[]) => CommentData[]) => void;
   inputComment: string;
   setInputComment: (value: string) => void;
-  idComment: ID | undefined;
-  setIdComment: (value: ID | undefined) => void;
+  options: Options;
+  setOptions: (value: Options) => void;
 }
 
 export const FormComment = ({
   setComments,
   inputComment,
   setInputComment,
-  idComment,
-  setIdComment
+  options,
+  setOptions
 }: Props) => {
   const handleForm = (e: SubmitEvent) => {
     e.preventDefault();
@@ -29,15 +29,15 @@ export const FormComment = ({
       return;
     }
 
-    if (idComment) {
+    if (options.id && options.edit) {
       setComments((prev) =>
         prev.map((comment) =>
-          comment.id === idComment
+          comment.id === options.id
             ? { ...comment, content: COMMENT_PARSER }
             : comment
         )
       );
-      setIdComment(undefined);
+      setOptions({ open: false, edit: false });
       setInputComment("");
       return;
     }

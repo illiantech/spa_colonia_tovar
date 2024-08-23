@@ -1,5 +1,5 @@
 import type { ComponentChildren } from "preact";
-import { type CommentData, type ID, type Info } from "../utils/types";
+import { type CommentData, type Info, type Options } from "../utils/types";
 
 import { useState } from "preact/hooks";
 import { Comment } from "./mediaModal/Comment";
@@ -14,8 +14,10 @@ interface Props {
 export const Content = ({ info, title, children }: Props) => {
   const [comments, setComments] = useState<CommentData[]>([]);
   const [inputComment, setInputComment] = useState<string>("");
-  const [idComment, setIdComment] = useState<ID>();
-  const [idOptions, setIdOptions] = useState<ID>();
+  const [options, setOptions] = useState<Options>({
+    open: false,
+    edit: false
+  });
 
   return (
     <article class="relative flex h-1/2 flex-col overflow-hidden rounded-b-md bg-gray-950 text-white lg:h-full lg:justify-between lg:rounded-r-md lg:rounded-bl-none">
@@ -32,10 +34,9 @@ export const Content = ({ info, title, children }: Props) => {
           {comments.map((comment) => {
             return (
               <Comment
-                idOptions={idOptions}
-                setIdOptions={setIdOptions}
-                idComment={idComment}
-                setIdComment={setIdComment}
+                setComments={setComments}
+                options={options}
+                setOptions={setOptions}
                 setInputComment={setInputComment}
                 key={comment.id}
                 {...comment}
@@ -48,8 +49,8 @@ export const Content = ({ info, title, children }: Props) => {
         inputComment={inputComment}
         setInputComment={setInputComment}
         setComments={setComments}
-        idComment={idComment}
-        setIdComment={setIdComment}
+        options={options}
+        setOptions={setOptions}
       />
     </article>
   );

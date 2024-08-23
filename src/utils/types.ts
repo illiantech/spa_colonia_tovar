@@ -2,7 +2,7 @@ export interface TourismSite {
   title: string;
   images: Image[];
   info: Info;
-  readonly id: `${string}-${string}-${string}-${string}-${string}`;
+  readonly id: ID;
 }
 
 export interface Image {
@@ -40,3 +40,9 @@ export interface CommentData {
 }
 
 export type ID = `${string}-${string}-${string}-${string}`;
+
+export interface Options {
+  id?: ID;
+  open: boolean;
+  edit: boolean;
+}
