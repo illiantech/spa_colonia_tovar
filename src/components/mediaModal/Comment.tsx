@@ -5,7 +5,7 @@ import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 interface Props extends CommentData {
   setInputComment: (value: string) => void;
   options: Options;
-  setOptions: (value: (prev: Options) => Options) => void;
+  setOptions: (value: ((prev: Options) => Options) | Options) => void;
   setComments: (value: (prev: CommentData[]) => CommentData[]) => void;
 }
 
@@ -22,6 +22,8 @@ export const Comment = ({
   const handleDelete = () => {
     transitionViewIfSupported(() => {
       setComments((prev) => prev.filter((comment) => comment.id !== id));
+      setOptions({ open: false, edit: false });
+      setInputComment("");
     });
   };
 
