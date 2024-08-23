@@ -1,21 +1,24 @@
-import { useState, type MutableRef } from "preact/hooks";
-import { type CommentData, type CommentEdit } from "../../utils/types";
+import { useState } from "preact/hooks";
+import { type CommentData, type ID } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 
 interface Props extends CommentData {
-  refCommentEdit: MutableRef<CommentEdit | undefined>;
+  setInputComment: (value: string) => void;
+  setIdComment: (value: ID) => void;
+  idComment: ID | undefined;
 }
 
 export const Comment = ({
-  comment,
+  content,
   user,
   date,
+  setIdComment,
+  idComment,
+  setInputComment,
 
-  refCommentEdit,
   id
 }: Props) => {
   const [options, setOptions] = useState<boolean>(false);
-  const [commentEdit, setCommentEdit] = useState<CommentEdit>();
 
   const handleOptions = () => {
     transitionViewIfSupported(() => {
@@ -24,10 +27,9 @@ export const Comment = ({
   };
 
   const handleEdit = () => {
-    setCommentEdit({
-      comment,
-      id
-    });
+    setInputComment(content);
+
+    setIdComment(id);
   };
 
   return (
@@ -41,7 +43,7 @@ export const Comment = ({
         <h4 class="flex flex-col items-start ps-2 font-bold">
           {user.name}
 
-          {commentEdit && (
+          {idComment === id && (
             <div class="grid place-content-center pe-0 text-xs font-normal opacity-60">
               Editando
             </div>
@@ -70,14 +72,14 @@ export const Comment = ({
                 title="Editar comentario"
                 class="font-bold"
               >
-                {commentEdit ? "No editar" : "Editar"}
+                {idComment === id ? "No editar" : "Editar"}
               </button>
             </div>
           )}
         </div>
 
         <br />
-        <p class="max-w-[175px] break-words ps-2 lg:max-w-52">{comment}</p>
+        <p class="max-w-[175px] break-words ps-2 lg:max-w-52">{content}</p>
 
         <br />
         <time class="col-start-2 ps-2 opacity-60">{date}</time>

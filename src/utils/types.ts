@@ -30,13 +30,13 @@ export interface PropsVsiblePosition<T> {
 }
 
 export interface CommentData {
-  comment: string;
+  content: string;
   date: number;
   user: {
     name: string;
     avatar: string;
   };
-  readonly id: `${string}-${string}-${string}-${string}`;
+  readonly id: ID;
 }
 
-export type CommentEdit = Pick<CommentData, "comment" | "id">;
+export type ID = `${string}-${string}-${string}-${string}`;

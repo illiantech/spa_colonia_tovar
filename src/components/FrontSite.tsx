@@ -6,18 +6,20 @@ interface Props<T> {
   refImgPrev: RefObject<T>;
   image: Image;
   title: string;
+  active: boolean;
 }
 
 export const Front = <T extends HTMLElement>({
   handleSite,
   refImgPrev,
+  active,
   image,
   title
 }: Props<T>) => {
   return (
     <figure
       title="click para mas contenido"
-      class="figure-border relative aspect-square w-[45%] max-w-72 cursor-pointer border-[2px] after:absolute after:top-0 after:aspect-square after:w-full after:bg-black after:opacity-20 after:transition-opacity after:content-[''] lg:after:hover:opacity-0"
+      class={` ${active ? "opacity-0" : "opacity-100"} figure-border relative aspect-square w-[45%] max-w-72 cursor-pointer border-[2px] transition-opacity after:absolute after:top-0 after:aspect-square after:w-full after:bg-black after:opacity-20 after:transition-opacity after:content-[''] lg:after:hover:opacity-0`}
       onClick={handleSite}
     >
       <img
