@@ -1,4 +1,3 @@
-import { useState } from "preact/hooks";
 import { type CommentData, type ID } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 
@@ -6,6 +5,8 @@ interface Props extends CommentData {
   setInputComment: (value: string) => void;
   setIdComment: (value: ID) => void;
   idComment: ID | undefined;
+  idOptions: ID | undefined;
+  setIdOptions: (value: ID) => void;
 }
 
 export const Comment = ({
@@ -15,14 +16,15 @@ export const Comment = ({
   setIdComment,
   idComment,
   setInputComment,
-
+  idOptions,
+  setIdOptions,
   id
 }: Props) => {
-  const [options, setOptions] = useState<boolean>(false);
+  // const [options, setOptions] = useState<boolean>(false);
 
   const handleOptions = () => {
     transitionViewIfSupported(() => {
-      setOptions(!options);
+      setIdOptions(id);
     });
   };
 
@@ -57,7 +59,7 @@ export const Comment = ({
           >
             ...
           </button>
-          {options && (
+          {id === idOptions && (
             <div class="absolute right-0 top-8 z-10 flex w-24 flex-col gap-2 rounded-md border border-neutral-700 bg-neutral-900 py-2 text-xs shadow-lg">
               <button
                 onClick={handleOptions}
