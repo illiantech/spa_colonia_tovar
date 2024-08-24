@@ -6,7 +6,7 @@ interface PropsIcons {
 }
 export const SendIcon = ({ fill, stroke, strokeWidth }: PropsIcons) => {
   return (
-    <svg viewBox="0 0 24 24" fill={fill ? fill : "none"}>
+    <svg viewBox="1 1 22 22" fill={fill ? fill : "none"}>
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g
         id="SVGRepo_tracerCarrier"

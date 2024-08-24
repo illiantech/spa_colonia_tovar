@@ -4,8 +4,9 @@ import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 
 interface Props extends CommentData {
   setInputComment: (value: string) => void;
-  options: Options;
+  inputComment: string;
   setOptions: (value: ((prev: Options) => Options) | Options) => void;
+  options: Options;
   setComments: (value: (prev: CommentData[]) => CommentData[]) => void;
 }
 
@@ -15,10 +16,14 @@ export const Comment = ({
   date,
   setComments,
   setInputComment,
+  inputComment,
   options,
   setOptions,
+
   id
 }: Props) => {
+  const VERIFY_EDIT = options.id === id && options.edit;
+
   const handleDelete = () => {
     transitionViewIfSupported(() => {
       setComments((prev) => prev.filter((comment) => comment.id !== id));
@@ -28,8 +33,6 @@ export const Comment = ({
   };
 
   const handleOptions = () => {
-    if (options.edit) setInputComment(content);
-
     transitionViewIfSupported(() => {
       setOptions((prev) => ({
         ...prev,
@@ -49,7 +52,7 @@ export const Comment = ({
 
   useEffect(() => {
     if (options.id === id) setInputComment(!options.edit ? "" : content);
-  }, [options]);
+  }, [options.edit]);
 
   return (
     <>
@@ -62,7 +65,7 @@ export const Comment = ({
         <h4 class="flex flex-col items-start ps-2 font-bold">
           {user.name}
 
-          {options.id === id && options.edit && (
+          {VERIFY_EDIT && (
             <div class="grid place-content-center pe-0 text-xs font-normal opacity-60">
               Editando
             </div>
@@ -92,14 +95,16 @@ export const Comment = ({
                 title="Editar comentario"
                 class="font-bold"
               >
-                {options.id === id && options.edit ? "No editar" : "Editar"}
+                {VERIFY_EDIT ? "No editar" : "Editar"}
               </button>
             </div>
           )}
         </div>
 
         <br />
-        <p class="max-w-[175px] break-words ps-2 lg:max-w-52">{content}</p>
+        <p class="max-w-[175px] break-words ps-2 lg:max-w-52">
+          {VERIFY_EDIT ? inputComment : content}
+        </p>
 
         <br />
         <time class="col-start-2 ps-2 opacity-60">{date}</time>

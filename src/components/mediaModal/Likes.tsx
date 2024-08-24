@@ -14,7 +14,7 @@ export const Likes = () => {
   };
 
   return (
-    <div class="absolute left-[85%] top-3 flex flex-col items-center gap-1 lg:left-5 lg:top-[85%] lg:flex-row lg:gap-2">
+    <div class="absolute left-[85%] top-3 flex flex-col items-center gap-1 lg:left-5 lg:top-[83%] lg:flex-row lg:gap-2">
       <button onClick={handleLike} title="Me gusta" class="aspect-square w-8">
         {<LikeIcon clase={like ? "like__active like " : "like"} />}
       </button>

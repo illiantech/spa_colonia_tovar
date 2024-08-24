@@ -20,7 +20,7 @@ export const Content = ({ info, title, children }: Props) => {
   });
 
   return (
-    <article class="relative flex h-1/2 flex-col overflow-hidden rounded-b-md bg-gray-950 text-white lg:h-full lg:justify-between lg:rounded-r-md lg:rounded-bl-none">
+    <article class="relative flex h-1/2 flex-col justify-between overflow-hidden rounded-b-md bg-gray-950 text-white lg:h-full lg:rounded-r-md lg:rounded-bl-none">
       {children}
       <h3 class="flex items-center px-6 py-6 text-base font-bold lg:h-[15%] lg:text-xl">
         <div class="w-5/6 lg:w-full">{title}</div>
@@ -34,6 +34,7 @@ export const Content = ({ info, title, children }: Props) => {
           {comments.map((comment) => {
             return (
               <Comment
+                inputComment={inputComment}
                 setComments={setComments}
                 options={options}
                 setOptions={setOptions}
