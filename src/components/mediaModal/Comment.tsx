@@ -1,14 +1,6 @@
-import { useEffect } from "preact/hooks";
-import { type CommentData, type Options } from "../../utils/types";
-import { transitionViewIfSupported } from "../../utils/utilityFunctions";
+import { type MediaComment } from "../../utils/types";
 
-interface Props extends CommentData {
-  setInputComment: (value: string) => void;
-  inputComment: string;
-  setOptions: (value: ((prev: Options) => Options) | Options) => void;
-  options: Options;
-  setComments: (value: (prev: CommentData[]) => CommentData[]) => void;
-}
+import { useCommentOption } from "../../hooks/useCommentOptions";
 
 export const Comment = ({
   content,
@@ -19,40 +11,23 @@ export const Comment = ({
   inputComment,
   options,
   setOptions,
+  setEdit,
+  edit,
 
   id
-}: Props) => {
-  const VERIFY_EDIT = options.id === id && options.edit;
+}: MediaComment) => {
+  const VERIFY_EDIT = edit.id === id && edit.active;
 
-  const handleDelete = () => {
-    transitionViewIfSupported(() => {
-      setComments((prev) => prev.filter((comment) => comment.id !== id));
-      setOptions({ open: false, edit: false });
-      setInputComment("");
-    });
-  };
-
-  const handleOptions = () => {
-    transitionViewIfSupported(() => {
-      setOptions((prev) => ({
-        ...prev,
-        open: prev.id === id ? !prev.open : true,
-        id
-      }));
-    });
-  };
-
-  const handleEdit = () => {
-    setOptions((prev) => ({
-      ...prev,
-      edit: !prev.edit,
-      id
-    }));
-  };
-
-  useEffect(() => {
-    if (options.id === id) setInputComment(!options.edit ? "" : content);
-  }, [options.edit]);
+  const { handleDelete, handleEdit, handleOptions } = useCommentOption({
+    setComments,
+    setOptions,
+    options,
+    setEdit,
+    edit,
+    setInputComment,
+    id,
+    content
+  });
 
   return (
     <>
@@ -79,7 +54,7 @@ export const Comment = ({
           >
             ...
           </button>
-          {id === options.id && options.open && (
+          {id === options.id && options.active && (
             <div class="absolute right-0 top-8 z-10 flex w-24 flex-col gap-2 rounded-md border border-neutral-700 bg-neutral-900 py-2 text-xs shadow-lg">
               <button
                 onClick={handleDelete}

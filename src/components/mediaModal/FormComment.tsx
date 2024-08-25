@@ -1,45 +1,37 @@
 import type { ChangeEvent } from "preact/compat";
 import { MAX_INPUT } from "../../utils/const";
-import { type CommentData, type Options } from "../../utils/types";
+import { type MediaForm } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 import { SendIcon } from "../icons";
-
-interface Props {
-  setComments: (value: (prev: CommentData[]) => CommentData[]) => void;
-  inputComment: string;
-  setInputComment: (value: string) => void;
-  options: Options;
-  setOptions: (value: Options) => void;
-}
 
 export const FormComment = ({
   setComments,
   inputComment,
   setInputComment,
-  options,
+  edit,
+  setEdit,
   setOptions
-}: Props) => {
+}: MediaForm) => {
   const handleForm = (e: SubmitEvent) => {
     e.preventDefault();
 
     const COMMENT_PARSER = inputComment.trim();
 
-    if (!COMMENT_PARSER) {
-      alert("Por favor, escribe un comentario.");
+    if (edit.id && edit.active) {
+      transitionViewIfSupported(() => {
+        setComments((prev) =>
+          prev.map((comment) =>
+            comment.id === edit.id
+              ? { ...comment, content: COMMENT_PARSER }
+              : comment
+          )
+        );
 
-      return;
-    }
+        setOptions({ active: false });
+        setEdit({ active: false });
+        setInputComment("");
+      });
 
-    if (options.id && options.edit) {
-      setComments((prev) =>
-        prev.map((comment) =>
-          comment.id === options.id
-            ? { ...comment, content: COMMENT_PARSER }
-            : comment
-        )
-      );
-      setOptions({ open: false, edit: false });
-      setInputComment("");
       return;
     }
 
@@ -69,6 +61,7 @@ export const FormComment = ({
       class="relative flex h-full flex-1 items-center justify-evenly lg:h-[12%] lg:flex-initial"
     >
       <textarea
+        required
         value={inputComment}
         placeholder="Agrega un comentario..."
         type="text"
@@ -76,8 +69,10 @@ export const FormComment = ({
         class="h-1/2 w-3/4 resize-none place-content-center bg-gray-950 ps-2 focus-visible:outline-none"
         onInput={handleInput}
         maxLength={MAX_INPUT}
+        // joke XD
+        minLength={MAX_INPUT / MAX_INPUT}
       />
-      <span class="absolute -bottom-px left-[7.5%] text-sm opacity-60">
+      <span class="absolute -bottom-px left-[7.5%] text-xs opacity-60 lg:text-sm">
         {inputComment.length}/200
       </span>
       <button

@@ -1,7 +1,6 @@
 import type { ComponentChildren } from "preact";
-import { type CommentData, type Info, type Options } from "../utils/types";
-
-import { useState } from "preact/hooks";
+import { type CommentData, type Info, type ToggleID } from "../utils/types";
+import { useEffect, useState } from "preact/hooks";
 import { Comment } from "./mediaModal/Comment";
 import { FormComment } from "./mediaModal/FormComment";
 
@@ -9,15 +8,22 @@ interface Props {
   info: Info;
   title: string;
   children: ComponentChildren;
+  active: boolean;
 }
 
-export const Content = ({ info, title, children }: Props) => {
+export const Content = ({ info, title, children, active }: Props) => {
   const [comments, setComments] = useState<CommentData[]>([]);
   const [inputComment, setInputComment] = useState<string>("");
-  const [options, setOptions] = useState<Options>({
-    open: false,
-    edit: false
-  });
+  const [options, setOptions] = useState<ToggleID>({ active: false });
+  const [edit, setEdit] = useState<ToggleID>({ active: false });
+
+  useEffect(() => {
+    if (!active) {
+      setOptions({ active: false });
+      setEdit({ active: false });
+      setInputComment("");
+    }
+  }, [active]);
 
   return (
     <article class="relative flex h-1/2 flex-col justify-between overflow-hidden rounded-b-md bg-gray-950 text-white lg:h-full lg:rounded-r-md lg:rounded-bl-none">
@@ -38,6 +44,8 @@ export const Content = ({ info, title, children }: Props) => {
                 setComments={setComments}
                 options={options}
                 setOptions={setOptions}
+                edit={edit}
+                setEdit={setEdit}
                 setInputComment={setInputComment}
                 key={comment.id}
                 {...comment}
@@ -50,7 +58,8 @@ export const Content = ({ info, title, children }: Props) => {
         inputComment={inputComment}
         setInputComment={setInputComment}
         setComments={setComments}
-        options={options}
+        edit={edit}
+        setEdit={setEdit}
         setOptions={setOptions}
       />
     </article>

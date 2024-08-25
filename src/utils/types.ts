@@ -39,10 +39,30 @@ export interface CommentData {
   readonly id: ID;
 }
 
-export type ID = `${string}-${string}-${string}-${string}`;
+type ID = `${string}-${string}-${string}-${string}`;
 
-export interface Options {
+export interface ToggleID {
   id?: ID;
-  open: boolean;
-  edit: boolean;
+  active: boolean;
 }
+
+type SetToggleID = (value: ((prev: ToggleID) => ToggleID) | ToggleID) => void;
+
+interface MediaModal {
+  setInputComment: (value: string) => void;
+  setComments: (
+    value: ((prev: CommentData[]) => CommentData[]) | CommentData[]
+  ) => void;
+  setEdit: SetToggleID;
+  edit: ToggleID;
+  setOptions: SetToggleID;
+  inputComment: string;
+  options: ToggleID;
+}
+
+export type MediaComment = MediaModal & CommentData;
+
+export type MediaOptions = Omit<MediaModal, "inputComment"> &
+  Pick<CommentData, "content" | "id">;
+
+export type MediaForm = Omit<MediaModal, "options">;
