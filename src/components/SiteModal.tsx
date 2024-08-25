@@ -45,7 +45,7 @@ export const SiteModal = ({ title, info, images, id }: TourismSite) => {
       <dialog
         id={CLOSE_MODAL}
         ref={refDialog}
-        class="h-3/4 w-5/6 max-w-96 overflow-visible bg-transparent backdrop:bg-black backdrop:bg-opacity-40 focus-visible:outline-none lg:h-fit lg:w-5/6 lg:max-w-5xl"
+        class="h-5/6 w-5/6 max-w-96 overflow-visible bg-transparent backdrop:bg-black backdrop:bg-opacity-40 focus-visible:outline-none lg:h-fit lg:w-5/6 lg:max-w-5xl"
         onClick={handleClose}
       >
         <CloseButton handleClose={handleClose} />

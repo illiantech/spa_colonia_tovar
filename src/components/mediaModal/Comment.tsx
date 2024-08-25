@@ -102,7 +102,7 @@ export const Comment = ({
         </div>
 
         <br />
-        <p class="max-w-[175px] break-words ps-2 lg:max-w-52">
+        <p class="max-w-40 break-words ps-2 lg:max-w-52">
           {VERIFY_EDIT ? inputComment : content}
         </p>
 
