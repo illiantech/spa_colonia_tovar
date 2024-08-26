@@ -1,6 +1,7 @@
 import { type MediaComment } from "../../utils/types";
 
 import { useCommentOption } from "../../hooks/useCommentOptions";
+import { formatterElapsedTime } from "../../utils/utilityFunctions";
 
 export const Comment = ({
   content,
@@ -81,7 +82,9 @@ export const Comment = ({
         </p>
 
         <br />
-        <time class="col-start-2 ps-2 opacity-60">{date}</time>
+        <time class="col-start-2 ps-2 opacity-60">
+          {formatterElapsedTime(date)}
+        </time>
       </article>
 
       <br />

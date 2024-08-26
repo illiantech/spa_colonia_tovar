@@ -22,14 +22,13 @@ export const FormComment = ({
 
     if (edit.id && edit.active) {
       transitionViewIfSupported(() => {
-        if (actions)
-          actions({
-            type: CommentActions.UPDATE,
-            others: {
-              content: COMMENT_PARSER,
-              id: edit.id
-            }
-          });
+        actions({
+          type: CommentActions.UPDATE,
+          others: {
+            content: COMMENT_PARSER,
+            id: edit.id
+          }
+        });
 
         setOptions({ active: false });
         setEdit({ active: false });
@@ -50,7 +49,7 @@ export const FormComment = ({
     };
 
     transitionViewIfSupported(() => {
-      if (actions) actions({ type: CommentActions.ADD, add: COMMENT_DATA });
+      actions({ type: CommentActions.ADD, add: COMMENT_DATA });
     });
     setInputComment("");
   };

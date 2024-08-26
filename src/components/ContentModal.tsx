@@ -1,6 +1,6 @@
 import type { ComponentChildren } from "preact";
-import { type Info, type ToggleID } from "../utils/types";
 import { useContext, useEffect, useState } from "preact/hooks";
+import { type Info, type ToggleID } from "../utils/types";
 import { Comment } from "./mediaModal/Comment";
 import { FormComment } from "./mediaModal/FormComment";
 import { CommentsContext } from "./mediaModal/ProviderComment";
@@ -38,21 +38,20 @@ export const Content = ({ info, title, children, active }: Props) => {
         <br />
         <br />
         <section>
-          {comments &&
-            comments.map((comment) => {
-              return (
-                <Comment
-                  inputComment={inputComment}
-                  options={options}
-                  setOptions={setOptions}
-                  edit={edit}
-                  setEdit={setEdit}
-                  setInputComment={setInputComment}
-                  key={comment.id}
-                  {...comment}
-                />
-              );
-            })}
+          {comments.map((comment) => {
+            return (
+              <Comment
+                inputComment={inputComment}
+                options={options}
+                setOptions={setOptions}
+                edit={edit}
+                setEdit={setEdit}
+                setInputComment={setInputComment}
+                key={comment.id}
+                {...comment}
+              />
+            );
+          })}
         </section>
       </div>
       <FormComment

@@ -17,7 +17,7 @@ export const useCommentOption = ({
 
   const handleDelete = () => {
     transitionViewIfSupported(() => {
-      if (actions) actions({ type: CommentActions.DELETE, others: { id } });
+      actions({ type: CommentActions.DELETE, others: { id } });
       setOptions({ active: false });
       setEdit({ active: false });
       setInputComment("");

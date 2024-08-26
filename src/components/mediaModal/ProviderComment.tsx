@@ -8,9 +8,9 @@ interface Props {
   initialComments: CommentData[];
 }
 
-export const CommentsContext = createContext<CommentData[] | null>(null);
-export const CommentActionsContext = createContext<Dispatch<Action> | null>(
-  null
+export const CommentsContext = createContext<CommentData[]>([]);
+export const CommentActionsContext = createContext<Dispatch<Action>>(
+  ({}) => {}
 );
 
 export const PorviderComment = ({ children, initialComments }: Props) => {
@@ -30,7 +30,7 @@ const commentActions = (comments: CommentData[], actions: Action) => {
 
   switch (type) {
     case CommentActions.ADD: {
-      return [...comments, add];
+      if (add) return [...comments, add];
     }
 
     case CommentActions.UPDATE: {
