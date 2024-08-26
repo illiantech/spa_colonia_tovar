@@ -8,6 +8,7 @@ import { CloseButton } from "./CloseButtonModal";
 import { Content } from "./ContentModal";
 import { Front } from "./FrontSite";
 import { Likes } from "./mediaModal/Likes";
+import { PorviderComment } from "./mediaModal/ProviderComment";
 import { Slider } from "./SiderModal";
 
 export const SiteModal = ({ title, info, images, id }: TourismSite) => {
@@ -49,9 +50,12 @@ export const SiteModal = ({ title, info, images, id }: TourismSite) => {
 
         <div class="h-full lg:grid lg:grid-cols-[1fr_350px] lg:grid-rows-1">
           <Slider refImgNew={refImgNew} images={images} />
-          <Content active={active} title={title} info={info}>
-            <Likes />
-          </Content>
+
+          <PorviderComment initialComments={[]}>
+            <Content active={active} title={title} info={info}>
+              <Likes />
+            </Content>
+          </PorviderComment>
         </div>
       </dialog>
 

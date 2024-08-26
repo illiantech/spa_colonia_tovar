@@ -1,3 +1,5 @@
+import type { CommentActions } from "./enums";
+
 export interface TourismSite {
   title: string;
   images: Image[];
@@ -46,13 +48,16 @@ export interface ToggleID {
   active: boolean;
 }
 
+export interface Action {
+  type: CommentActions;
+  add?: CommentData;
+  others?: Partial<Pick<CommentData, "id" | "content">>;
+}
+
 type SetToggleID = (value: ((prev: ToggleID) => ToggleID) | ToggleID) => void;
 
 interface MediaModal {
   setInputComment: (value: string) => void;
-  setComments: (
-    value: ((prev: CommentData[]) => CommentData[]) | CommentData[]
-  ) => void;
   setEdit: SetToggleID;
   edit: ToggleID;
   setOptions: SetToggleID;

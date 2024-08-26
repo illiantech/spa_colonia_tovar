@@ -1,8 +1,9 @@
 import type { ComponentChildren } from "preact";
-import { type CommentData, type Info, type ToggleID } from "../utils/types";
-import { useEffect, useState } from "preact/hooks";
+import { type Info, type ToggleID } from "../utils/types";
+import { useContext, useEffect, useState } from "preact/hooks";
 import { Comment } from "./mediaModal/Comment";
 import { FormComment } from "./mediaModal/FormComment";
+import { CommentsContext } from "./mediaModal/ProviderComment";
 
 interface Props {
   info: Info;
@@ -12,10 +13,10 @@ interface Props {
 }
 
 export const Content = ({ info, title, children, active }: Props) => {
-  const [comments, setComments] = useState<CommentData[]>([]);
   const [inputComment, setInputComment] = useState<string>("");
   const [options, setOptions] = useState<ToggleID>({ active: false });
   const [edit, setEdit] = useState<ToggleID>({ active: false });
+  const comments = useContext(CommentsContext);
 
   useEffect(() => {
     if (!active) {
@@ -37,27 +38,26 @@ export const Content = ({ info, title, children, active }: Props) => {
         <br />
         <br />
         <section>
-          {comments.map((comment) => {
-            return (
-              <Comment
-                inputComment={inputComment}
-                setComments={setComments}
-                options={options}
-                setOptions={setOptions}
-                edit={edit}
-                setEdit={setEdit}
-                setInputComment={setInputComment}
-                key={comment.id}
-                {...comment}
-              />
-            );
-          })}
+          {comments &&
+            comments.map((comment) => {
+              return (
+                <Comment
+                  inputComment={inputComment}
+                  options={options}
+                  setOptions={setOptions}
+                  edit={edit}
+                  setEdit={setEdit}
+                  setInputComment={setInputComment}
+                  key={comment.id}
+                  {...comment}
+                />
+              );
+            })}
         </section>
       </div>
       <FormComment
         inputComment={inputComment}
         setInputComment={setInputComment}
-        setComments={setComments}
         edit={edit}
         setEdit={setEdit}
         setOptions={setOptions}

@@ -1,9 +1,10 @@
-import { useEffect } from "preact/hooks";
+import { useContext, useEffect } from "preact/hooks";
+import { CommentActionsContext } from "../components/mediaModal/ProviderComment";
+import { CommentActions } from "../utils/enums";
 import { type MediaOptions } from "../utils/types";
 import { transitionViewIfSupported } from "../utils/utilityFunctions";
 
 export const useCommentOption = ({
-  setComments,
   setOptions,
   options,
   setEdit,
@@ -12,9 +13,11 @@ export const useCommentOption = ({
   content,
   id
 }: MediaOptions) => {
+  const actions = useContext(CommentActionsContext);
+
   const handleDelete = () => {
     transitionViewIfSupported(() => {
-      setComments((prev) => prev.filter((comment) => comment.id !== id));
+      if (actions) actions({ type: CommentActions.DELETE, others: { id } });
       setOptions({ active: false });
       setEdit({ active: false });
       setInputComment("");

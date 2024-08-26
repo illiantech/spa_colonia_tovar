@@ -1,17 +1,20 @@
-import type { ChangeEvent } from "preact/compat";
+import { useContext, type ChangeEvent } from "preact/compat";
 import { MAX_INPUT } from "../../utils/const";
+import { CommentActions } from "../../utils/enums";
 import { type MediaForm } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 import { SendIcon } from "../icons";
+import { CommentActionsContext } from "./ProviderComment";
 
 export const FormComment = ({
-  setComments,
   inputComment,
   setInputComment,
   edit,
   setEdit,
   setOptions
 }: MediaForm) => {
+  const actions = useContext(CommentActionsContext);
+
   const handleForm = (e: SubmitEvent) => {
     e.preventDefault();
 
@@ -19,13 +22,14 @@ export const FormComment = ({
 
     if (edit.id && edit.active) {
       transitionViewIfSupported(() => {
-        setComments((prev) =>
-          prev.map((comment) =>
-            comment.id === edit.id
-              ? { ...comment, content: COMMENT_PARSER }
-              : comment
-          )
-        );
+        if (actions)
+          actions({
+            type: CommentActions.UPDATE,
+            others: {
+              content: COMMENT_PARSER,
+              id: edit.id
+            }
+          });
 
         setOptions({ active: false });
         setEdit({ active: false });
@@ -46,7 +50,7 @@ export const FormComment = ({
     };
 
     transitionViewIfSupported(() => {
-      setComments((prev) => [...prev, COMMENT_DATA]);
+      if (actions) actions({ type: CommentActions.ADD, add: COMMENT_DATA });
     });
     setInputComment("");
   };

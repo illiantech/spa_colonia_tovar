@@ -6,7 +6,7 @@ export const Comment = ({
   content,
   user,
   date,
-  setComments,
+
   setInputComment,
   inputComment,
   options,
@@ -19,7 +19,6 @@ export const Comment = ({
   const VERIFY_EDIT = edit.id === id && edit.active;
 
   const { handleDelete, handleEdit, handleOptions } = useCommentOption({
-    setComments,
     setOptions,
     options,
     setEdit,
