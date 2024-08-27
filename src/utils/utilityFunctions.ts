@@ -21,5 +21,3 @@ export const formatterElapsedTime = (time: number) => {
     return `${Math.floor(elapsed / 604800000)} w`;
   }
 };
-
-console.log(Date.now(), BigInt(Date.now()));

@@ -2,6 +2,10 @@
 import { SiteModal } from "../components/SiteModal";
 import Layout from "../layouts/Layout.astro";
 import { TOURISM_SITES } from "../utils/sites";
+
+import { db, Sites } from "astro:db";
+const SITES = await db.select().from(Sites);
+console.log(SITES);
 ---
 
 <Layout title="Welcome to Astro.">
