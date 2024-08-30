@@ -1,11 +1,19 @@
 ---
 import { SiteModal } from "../components/SiteModal";
 import Layout from "../layouts/Layout.astro";
-import { TOURISM_SITES } from "../utils/sites";
+import type { TourismSite } from "../utils/types";
 
-import { db, Sites } from "astro:db";
-const SITES = await db.select().from(Sites);
-console.log(SITES);
+// import { db, Sites } from "astro:db";
+// const SITES = await db.select().from(Sites);
+
+const ss = await fetch(
+  "https://raw.githubusercontent.com/illiantech/componentSite/main/JSON/tourismSites.json"
+);
+
+const s = (await ss.json()) as TourismSite[];
+
+// console.log(SITES);
+console.log(s);
 ---
 
 <Layout title="Welcome to Astro.">
@@ -13,7 +21,7 @@ console.log(SITES);
     <div
       class="flex max-w-6xl flex-wrap justify-evenly gap-x-1 gap-y-5 overflow-auto lg:gap-x-10 lg:gap-y-20"
     >
-      {TOURISM_SITES.map((site) => <SiteModal client:visible {...site} />)}
+      {s.map((site) => <SiteModal client:visible {...site} />)}
     </div>
   </section>
 </Layout>

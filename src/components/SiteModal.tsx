@@ -1,5 +1,4 @@
 import { useRef } from "preact/hooks";
-
 import { useVisiblePosition } from "../hooks/useVisiblePosition";
 import { CLOSE_MODAL } from "../utils/const";
 import { type TourismSite } from "../utils/types";
