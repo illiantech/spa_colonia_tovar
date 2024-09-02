@@ -3,8 +3,26 @@
 
 import { column, defineDb, defineTable } from "astro:db";
 
+const Images = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true, unique: true }),
+    src: column.text(),
+    alt: column.text(),
+    siteId: column.text({ references: () => Sites.columns.id })
+  }
+});
+
 export const Sites = defineTable({
   columns: {
+    title: column.text(),
+    tlf: column.text({ optional: true }),
+    openingHours: column.text({ optional: true }),
+    category: column.text({
+      enum: ["place", "inn", "restaurant", "activitys"]
+    }),
+    location: column.text(),
+    link: column.text(),
+    description: column.text(),
     id: column.text({ primaryKey: true, unique: true })
   }
 });
@@ -12,8 +30,10 @@ export const Sites = defineTable({
 const Comments = defineTable({
   columns: {
     id: column.text({ primaryKey: true, unique: true }),
-
-    content: column.text()
+    elapsedTime: column.number(),
+    content: column.text(),
+    siteId: column.text({ references: () => Sites.columns.id }),
+    userId: column.text({ references: () => Users.columns.id })
   }
 });
 
@@ -35,5 +55,5 @@ const Likes = defineTable({
 
 // https://astro.build/db/config
 export default defineDb({
-  tables: { Sites, Likes, Users, Comments }
+  tables: { Sites, Likes, Users, Comments, Images }
 });

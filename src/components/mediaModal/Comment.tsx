@@ -1,4 +1,4 @@
-import { type MediaComment } from "../../utils/types";
+import type { MediaComment } from "../../utils/types";
 
 import { useCommentOption } from "../../hooks/useCommentOptions";
 import { formatterElapsedTime } from "../../utils/utilityFunctions";
@@ -7,7 +7,6 @@ export const Comment = ({
   content,
   user,
   date,
-
   setInputComment,
   inputComment,
   options,

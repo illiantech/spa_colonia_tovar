@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "preact/hooks";
 import { CommentActionsContext } from "../components/mediaModal/ProviderComment";
 import { CommentActions } from "../utils/enums";
-import { type MediaOptions } from "../utils/types";
+import type{  MediaOptions } from "../utils/types";
 import { transitionViewIfSupported } from "../utils/utilityFunctions";
 
 export const useCommentOption = ({

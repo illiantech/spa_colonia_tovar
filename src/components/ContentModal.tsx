@@ -1,18 +1,18 @@
-import type { ComponentChildren } from "preact";
+import { type ComponentChildren } from "preact";
 import { useContext, useEffect, useState } from "preact/hooks";
-import { type Info, type ToggleID } from "../utils/types";
+import type { ToggleID } from "../utils/types";
 import { Comment } from "./mediaModal/Comment";
 import { FormComment } from "./mediaModal/FormComment";
 import { CommentsContext } from "./mediaModal/ProviderComment";
 
 interface Props {
-  info: Info;
+  description: string;
   title: string;
   children: ComponentChildren;
   active: boolean;
 }
 
-export const Content = ({ info, title, children, active }: Props) => {
+export const Content = ({ description, title, children, active }: Props) => {
   const [inputComment, setInputComment] = useState<string>("");
   const [options, setOptions] = useState<ToggleID>({ active: false });
   const [edit, setEdit] = useState<ToggleID>({ active: false });
@@ -33,7 +33,7 @@ export const Content = ({ info, title, children, active }: Props) => {
         <div class="w-5/6 lg:w-full">{title}</div>
       </h3>
       <div class="h-1/2 overflow-y-scroll border-y border-neutral-700 p-6 lg:absolute lg:top-[15%] lg:h-4/6">
-        <p> {info.description}</p>
+        <p> {description}</p>
         <br />
         <br />
         <br />

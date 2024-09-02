@@ -1,7 +1,7 @@
 import { useContext, type ChangeEvent } from "preact/compat";
 import { MAX_INPUT } from "../../utils/const";
 import { CommentActions } from "../../utils/enums";
-import { type MediaForm } from "../../utils/types";
+import type { MediaForm } from "../../utils/types";
 import { transitionViewIfSupported } from "../../utils/utilityFunctions";
 import { SendIcon } from "../icons";
 import { CommentActionsContext } from "./ProviderComment";

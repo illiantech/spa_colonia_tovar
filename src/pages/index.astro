@@ -6,14 +6,13 @@ import type { TourismSite } from "../utils/types";
 // import { db, Sites } from "astro:db";
 // const SITES = await db.select().from(Sites);
 
-const ss = await fetch(
-  "https://raw.githubusercontent.com/illiantech/componentSite/main/JSON/tourismSites.json"
-);
+const SITES = (await fetch(`${Astro.url.origin}/api/sites`).then((res) =>
+  res.json()
+)) as TourismSite[];
 
-const s = (await ss.json()) as TourismSite[];
+console.log(SITES);
 
-// console.log(SITES);
-console.log(s);
+// export const prerender = true;
 ---
 
 <Layout title="Welcome to Astro.">
@@ -21,7 +20,7 @@ console.log(s);
     <div
       class="flex max-w-6xl flex-wrap justify-evenly gap-x-1 gap-y-5 overflow-auto lg:gap-x-10 lg:gap-y-20"
     >
-      {s.map((site) => <SiteModal client:visible {...site} />)}
+      {SITES.map((site) => <SiteModal client:visible {...site} />)}
     </div>
   </section>
 </Layout>

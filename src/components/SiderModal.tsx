@@ -1,7 +1,7 @@
 import "blaze-slider/dist/blaze.css";
-import type { RefObject } from "preact";
+import { type RefObject } from "preact";
 import { useBlazeSlider } from "../hooks/useBlazeSlider";
-import { type Image } from "../utils/types";
+import type { Image } from "../utils/types";
 
 interface Props<T> {
   images: Image[];

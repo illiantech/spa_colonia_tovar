@@ -1,17 +1,37 @@
-import { db, Sites } from "astro:db";
+import { db, Images, Sites } from "astro:db";
 
-// fetch(
-//   "https://raw.githubusercontent.com/illiantech/spa_colonia_tovar/main/JSON/tourismSites.json"
-// )
-//   .then((res) => res.json())
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.log("errooor");
-//   });
-
-// https://astro.build/db/seed
 export default async function seed() {
-  await db.insert(Sites).values([{ id: "sdsd" }, { id: "sdsdsds" }]);
+  await db.insert(Sites).values([
+    {
+      id: "site-one",
+      title: "hola mundo",
+      tlf: "23232323",
+      openingHours: "Lunes a Viernes 9:00 AM - 5:00 PM",
+      location: "en la plaza",
+      link: "http://",
+      description: "lorem ipsum dolor sit amet, consectetur adipis",
+      category: "place"
+    }
+  ]);
+
+  await db.insert(Images).values([
+    {
+      id: crypto.randomUUID(),
+      src: "/spa_colonia_tovar/example.jpg",
+      alt: "example",
+      siteId: "site-one"
+    },
+    {
+      id: crypto.randomUUID(),
+      src: "/spa_colonia_tovar/example1.jpg",
+      alt: "example1",
+      siteId: "site-one"
+    },
+    {
+      id: crypto.randomUUID(),
+      src: "/spa_colonia_tovar/example2.jpg",
+      alt: "example2",
+      siteId: "site-one"
+    }
+  ]);
 }

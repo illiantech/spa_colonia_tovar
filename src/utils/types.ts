@@ -3,25 +3,18 @@ import type { CommentActions } from "./enums";
 export interface TourismSite {
   title: string;
   images: Image[];
-  info: Info;
-  readonly id: ID;
+
+  location: string;
+  description: string;
+  tlf?: string;
+  openingHours?: string;
+  links: string;
+  readonly id: string;
 }
 
 export interface Image {
   src: string;
   alt: string;
-}
-
-export interface Info {
-  description: string;
-  tlf?: string;
-  address: Address;
-  openingHours?: string;
-}
-
-interface Address {
-  location: string;
-  link: string;
 }
 
 export interface PropsVsiblePosition<T> {
@@ -38,13 +31,13 @@ export interface CommentData {
     name: string;
     avatar: string;
   };
-  readonly id: ID;
+  readonly id: UUID;
 }
 
-type ID = `${string}-${string}-${string}-${string}`;
+type UUID = `${string}-${string}-${string}-${string}`;
 
 export interface ToggleID {
-  id?: ID;
+  id?: UUID;
   active: boolean;
 }
 

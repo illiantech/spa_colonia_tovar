@@ -1,5 +1,5 @@
-import type { RefObject } from "preact";
-import { type Image } from "../utils/types";
+import  {type  RefObject } from "preact";
+import type { Image } from "../utils/types";
 
 interface Props<T> {
   handleSite: () => void;

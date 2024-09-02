@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { type PropsVsiblePosition } from "../utils/types";
+import type { PropsVsiblePosition } from "../utils/types";
 import { transitionViewIfSupported } from "../utils/utilityFunctions";
 
 export const useVisiblePosition = <T extends HTMLElement>({
@@ -23,6 +23,8 @@ export const useVisiblePosition = <T extends HTMLElement>({
       } = refImgPrev?.getBoundingClientRect() as DOMRect;
 
       transitionViewIfSupported(() => {
+        document.documentElement.style.overflow = "hidden";
+        document.documentElement.style.marginRight = "16px";
         (refDialog as unknown as HTMLDialogElement).showModal();
 
         const { x, y, width } = refImgNew?.getBoundingClientRect() as DOMRect;

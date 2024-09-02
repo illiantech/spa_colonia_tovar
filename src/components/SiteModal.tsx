@@ -1,7 +1,7 @@
 import { useRef } from "preact/hooks";
 import { useVisiblePosition } from "../hooks/useVisiblePosition";
 import { CLOSE_MODAL } from "../utils/const";
-import { type TourismSite } from "../utils/types";
+import type  {TourismSite } from "../utils/types";
 import { transitionViewIfSupported } from "../utils/utilityFunctions";
 import { CloseButton } from "./CloseButtonModal";
 import { Content } from "./ContentModal";
@@ -10,7 +10,7 @@ import { Likes } from "./mediaModal/Likes";
 import { PorviderComment } from "./mediaModal/ProviderComment";
 import { Slider } from "./SiderModal";
 
-export const SiteModal = ({ title, info, images, id }: TourismSite) => {
+export const SiteModal = ({ title, description, images, id }: TourismSite) => {
   const refImgPrev = useRef(null);
   const refImgNew = useRef(null);
   const refDialog = useRef(null);
@@ -29,6 +29,8 @@ export const SiteModal = ({ title, info, images, id }: TourismSite) => {
   const handleClose = ({ target }: MouseEvent) => {
     if ((target as HTMLElement).id === CLOSE_MODAL) {
       transitionViewIfSupported(() => {
+        document.documentElement.style.overflow = "auto";
+        document.documentElement.style.marginRight = "0px";
         (refDialog.current as unknown as HTMLDialogElement).close();
       });
     }
@@ -51,7 +53,7 @@ export const SiteModal = ({ title, info, images, id }: TourismSite) => {
           <Slider refImgNew={refImgNew} images={images} />
 
           <PorviderComment initialComments={[]}>
-            <Content active={active} title={title} info={info}>
+            <Content active={active} title={title} description={description}>
               <Likes />
             </Content>
           </PorviderComment>
