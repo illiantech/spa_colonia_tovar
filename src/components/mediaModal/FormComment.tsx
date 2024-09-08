@@ -43,7 +43,7 @@ export const FormComment = ({
       date: Date.now(),
       user: {
         name: "Usuario Anónimo",
-        avatar: "/spa_colonia_tovar/team-example.webp"
+        avatar: "/team-example.webp"
       },
       id: crypto.randomUUID()
     };

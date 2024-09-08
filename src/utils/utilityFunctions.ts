@@ -1,3 +1,5 @@
+import type { UUID } from "./types";
+
 export const transitionViewIfSupported = (updateCb: () => void) => {
   if (document.startViewTransition) {
     return document.startViewTransition(updateCb);
@@ -21,3 +23,17 @@ export const formatterElapsedTime = (time: number) => {
     return `${Math.floor(elapsed / 604800000)} w`;
   }
 };
+
+// reduce data model when relational data base is 1-N
+export const notRepeatData = ({ arr, id }: { arr: { id: UUID }[]; id: UUID }) =>
+  arr.every((item) => item.id !== id);
+
+// routes response shorthand function
+export const res = (
+  body: string,
+  {
+    status,
+    statusText,
+    headers
+  }: { status?: number; statusText?: string; headers?: HeadersInit }
+) => new Response(body, { status, statusText, headers });

@@ -1,21 +1,30 @@
 import type { APIRoute } from "astro";
-import { db, Sites } from "astro:db";
+import { schemaSites } from "../../schemas/sites";
+import { findSitesByCategory } from "../../services/sites";
+import { res } from "../../utils/utilityFunctions";
 
-const res = (
-  body: string,
-  {
-    status,
-    statusText,
-    headers
-  }: { status?: number; statusText: string; headers?: HeadersInit }
-) => new Response(body, { status, statusText, headers });
+// import { createHash } from "node:crypto";
+// export const generateID = (str: string) =>
+//   createHash("sha256").update(str).digest("hex");
 
-export const ALL: APIRoute = async () => {
-  const SITES = await db.all(Sites);
+export const getSites: APIRoute = async ({ params }) => {
+  const SITES = await findSitesByCategory(params);
+
+  const validation = schemaSites.safeParse(SITES);
+
+  if (!validation.success) {
+    return res(
+      JSON.stringify({
+        error: "Invalid data",
+        details: validation.error
+      }),
+      {
+        status: 406
+      }
+    );
+  }
 
   return res(JSON.stringify(SITES), {
-    status: 200,
-    statusText: "OK",
-    headers: { "Content-Type": "application/json" }
+    status: 200
   });
 };

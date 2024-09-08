@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="No Encontrado">
+  <section class="flex h-full items-center text-gray-50">
+    <div
+      class="container mx-auto my-8 flex flex-col items-center justify-center px-5"
+    >
+      <div
+        class="max-w-md text-center lg:flex lg:max-w-4xl lg:flex-col lg:items-center lg:gap-8"
+      >
+        <h2 class="mb-8 text-6xl font-extrabold text-white lg:text-9xl">
+          <span>Error</span>
+          <span class="box-content rounded bg-terracotta px-2">404</span>
+        </h2>
+        <p class="text-2xl font-semibold md:text-3xl lg:text-4xl">
+          Lo sentimos, no pudimos encontrar esta página.
+        </p>
+        <p class="mb-8 mt-4">
+          Pero no te preocupes, puedes encontrar muchas otras cosas en nuestra
+          página de inicio.
+        </p>
+        <a
+          rel="noopener noreferrer"
+          href="/"
+          class="rounded bg-terracotta-soft px-8 py-3 font-semibold text-gray-50"
+          >Volver a la página de inicio</a
+        >
+      </div>
+    </div>
+  </section>
+</Layout>

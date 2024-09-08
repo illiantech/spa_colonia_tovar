@@ -3,3 +3,10 @@ export const enum CommentActions {
   DELETE = "delete",
   UPDATE = "update"
 }
+
+export const enum CategorysEnum {
+  INN = "inn",
+  PLACE = "place",
+  RESTAURANT = "restaurant",
+  ACTIVITIES = "activities"
+}

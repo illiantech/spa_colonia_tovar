@@ -1,19 +1,16 @@
 import preact from "@astrojs/preact";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
-
-import db from "@astrojs/db";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  integrations: [
-    tailwind({
-      nesting: true
-    }),
-    preact(),
-    db()
-  ],
-  site: "https://illiantech.github.io",
-  base: "spa_colonia_tovar"
+  integrations: [tailwind({
+    nesting: true
+  }), preact()]
+  // site: "https://illiantech.github.io",
+  // base: "spa_colonia_tovar"
+  ,
+  adapter: vercel()
 });

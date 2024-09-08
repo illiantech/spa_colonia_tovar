@@ -38,7 +38,7 @@ export const Slider = <T extends HTMLElement>({
                   <img
                     loading="lazy"
                     decoding="async"
-                    key={img.alt}
+                    key={img.id}
                     class="aspect-square w-full object-cover"
                     {...img}
                   />

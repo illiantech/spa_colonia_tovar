@@ -1,26 +1,22 @@
 ---
-import { SiteModal } from "../components/SiteModal";
+// import { postSeedSites } from "./api/seedSites";
 import Layout from "../layouts/Layout.astro";
-import type { TourismSite } from "../utils/types";
 
-// import { db, Sites } from "astro:db";
-// const SITES = await db.select().from(Sites);
+// Despliegue con adaptador
 
-const SITES = (await fetch(`${Astro.url.origin}/api/sites`).then((res) =>
-  res.json()
-)) as TourismSite[];
+// const seed = await postSeedSites("" as unknown as APIContext);
 
-console.log(SITES);
+// const seedRes = await seed.json();
 
-// export const prerender = true;
+// console.log(seedRes);
+
+export const prerender = true;
 ---
 
 <Layout title="Welcome to Astro.">
-  <section class="mt-[1500px] flex justify-center">
-    <div
-      class="flex max-w-6xl flex-wrap justify-evenly gap-x-1 gap-y-5 overflow-auto lg:gap-x-10 lg:gap-y-20"
-    >
-      {SITES.map((site) => <SiteModal client:visible {...site} />)}
-    </div>
+  <section class="flex flex-col items-center gap-8">
+    <h1>SPA COLONIA TOVAR</h1>
+
+    <a class="rounded bg-terracotta-soft px-4 py-4" href="/Posadas/">Posadas</a>
   </section>
 </Layout>

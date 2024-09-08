@@ -8,13 +8,19 @@ export interface TourismSite {
   description: string;
   tlf?: string;
   openingHours?: string;
-  links: string;
+  links: Link[];
   readonly id: string;
+}
+
+interface Link {
+  url: string;
+  id: UUID;
 }
 
 export interface Image {
   src: string;
   alt: string;
+  readonly id: UUID;
 }
 
 export interface PropsVsiblePosition<T> {
@@ -34,7 +40,7 @@ export interface CommentData {
   readonly id: UUID;
 }
 
-type UUID = `${string}-${string}-${string}-${string}`;
+export type UUID = `${string}-${string}-${string}-${string}`;
 
 export interface ToggleID {
   id?: UUID;

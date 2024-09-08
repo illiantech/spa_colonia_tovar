@@ -1,6 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import "../styles/Normalize.css";
-
 interface Props {
   title: string;
 }
@@ -18,8 +18,9 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
+    <ViewTransitions />
   </head>
-  <body class="h-[200vh]">
+  <body>
     <slot />
   </body>
 </html>

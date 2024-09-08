@@ -1,4 +1,4 @@
-import  {type  RefObject } from "preact";
+import { type RefObject } from "preact";
 import type { Image } from "../utils/types";
 
 interface Props<T> {
@@ -18,7 +18,7 @@ export const Front = <T extends HTMLElement>({
   return (
     <figure
       title="click para mas contenido"
-      class="figure-border relative aspect-square w-[45%] max-w-72 cursor-pointer border-[2px] transition-opacity after:absolute after:top-0 after:aspect-square after:w-full after:bg-black after:opacity-20 after:transition-opacity after:content-[''] lg:after:hover:opacity-0"
+      class="figure-border relative aspect-square w-[45%] min-w-36 max-w-72 cursor-pointer border-[2px] transition-opacity after:absolute after:top-0 after:aspect-square after:w-full after:bg-black after:opacity-20 after:transition-opacity after:content-[''] lg:min-w-64 lg:after:hover:opacity-0"
       onClick={handleSite}
     >
       <img
